@@ -32,7 +32,7 @@ export async function PUT(request, { params }) {
         amount,
         event,
         devise,
-        desc: description,
+        description,
         country,
     });
     if (budget) {

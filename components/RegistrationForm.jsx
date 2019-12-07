@@ -3,7 +3,8 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 
-const url = "https://budget-beta-ten.vercel.app/api/budget"
+// const url = "https://budget-beta-ten.vercel.app"
+const url = "http://localhost:3000"
 
 export function RegistrationForm() {
     const router = useRouter()
@@ -33,13 +34,13 @@ export function RegistrationForm() {
         }
 
         try {
-            const res = await fetch(`${url}/`, {
+            const res = await fetch(`${url}/api/budget`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ amount, transEvent, devise, country, desc })
             })
             if (res.ok) {
-                router.push("/")
+                router.push("/data")
                 router.refresh()
             } else {
                 throw new Error("Failed to create this.")

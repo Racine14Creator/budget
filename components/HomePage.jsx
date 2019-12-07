@@ -1,10 +1,9 @@
-import Data from "./Data"
-import Navbar from "./Navbar"
+import { Dashboard } from "@/app/components/Dashboard/Dashboard"
 
 const HomePage = () => {
     return (
         <>
-            <Data />
+            <Dashboard />
         </>
     )
 }

@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-
+const url = "http://localhost:3000"
 const getData = async () => {
     try {
-        const res = await fetch(`https://budget-beta-ten.vercel.app/api/budget`, { cache: 'no-store' });
+        const res = await fetch(`${url}/api/budget`, { cache: 'no-store' });
 
         if (!res.ok) {
             throw new Error("Failed to fetch Data...");
@@ -33,7 +33,7 @@ const Data = () => {
 
         if (confirmed) {
 
-            const res = await fetch(`https://budget-beta-ten.vercel.app/api/budget/?id=${id}`, { method: "DELETE" })
+            const res = await fetch(`${url}/api/budget/?id=${id}`, { method: "DELETE" })
 
             if (res.ok) {
                 router.refresh()

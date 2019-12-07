@@ -3,7 +3,8 @@
 import EditForm from '@/components/EditForm';
 import { useEffect, useState } from 'react';
 
-const url = 'https://budget-beta-ten.vercel.app';
+// const url = 'https://budget-beta-ten.vercel.app';
+const url = 'http://localhost:3000';
 
 const EditOne = ({ params }) => {
     const { id } = params;
@@ -41,7 +42,7 @@ const EditOne = ({ params }) => {
                     desc={budget.description}
                 />
             )}
-            {!budget && <span className="loading loading-bars loading-lg mx-auto"></span>}
+            {!budget && <span className="max-w-md loading loading-bars loading-lg mx-auto"></span>}
         </>
     );
 };
