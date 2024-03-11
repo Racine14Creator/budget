@@ -1,8 +1,12 @@
+import EditForm from '@/components/EditForm'
 import React from 'react'
 
 const EditOne = () => {
     return (
-        <div>EditOne</div>
+        <>
+            <h3 className="text-3xl font-bold">Update</h3>
+            <EditForm />
+        </>
     )
 }
 

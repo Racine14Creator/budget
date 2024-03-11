@@ -3,6 +3,13 @@ import Link from "next/link"
 const Data = () => {
     return (
         <div className="overflow-x-auto">
+            <form action="#" method="post">
+                <select className="select select-bordered w-full max-w-xs mb-5">
+                    <option disabled selected>Select Event?</option>
+                    <option value={'Income'}>Income</option>
+                    <option value={'Expense'}>Expense</option>
+                </select>
+            </form>
             <table className="table table-zebra">
                 {/* head */}
                 <thead>
