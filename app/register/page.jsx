@@ -1,8 +1,10 @@
-import React from 'react'
+import { RegistrationForm } from '@/components/RegistrationForm'
 
 const Register = () => {
     return (
-        <div>Register</div>
+        <div className="container min-h-screen">
+            <RegistrationForm />
+        </div>
     )
 }
 
