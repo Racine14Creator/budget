@@ -12,6 +12,7 @@ const Data = () => {
                         <th>Event</th>
                         <th>Devise</th>
                         <th>Description</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +28,7 @@ const Data = () => {
                         <td>
                             <div className="join">
                                 <Link href={`/edit/123`} className="btn join-item btn-sm btn-primary">Edit</Link>
-                                <button className="btn join-item btn-sm btn-warning">Delete</button>
+                                <button className="btn join-item btn-sm btn-error">Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -43,7 +44,7 @@ const Data = () => {
                         <td>
                             <div className="join">
                                 <Link href={`/edit/123`} className="btn join-item btn-sm btn-primary">Edit</Link>
-                                <button className="btn join-item btn-sm btn-warning">Delete</button>
+                                <button className="btn join-item btn-sm btn-error">Delete</button>
                             </div>
                         </td>
                     </tr>
