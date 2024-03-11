@@ -1,7 +1,11 @@
+import Data from "./Data"
+import Navbar from "./Navbar"
 
 const HomePage = () => {
     return (
-        <div>HomePage</div>
+        <>
+            <Data />
+        </>
     )
 }
 
