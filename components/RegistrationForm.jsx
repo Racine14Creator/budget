@@ -25,6 +25,11 @@ export function RegistrationForm() {
                 </div>
 
                 <div className="group w-full my-1">
+                    <input type="text" name="country" placeholder="Country" className="input
+                 input-bordered my-2 input-md w-full" />
+                </div>
+
+                <div className="group w-full my-1">
                     <textarea className="textarea textarea-bordered my-2 w-full" placeholder="Bio"></textarea>
                 </div>
 
