@@ -8,14 +8,14 @@ const EditForm = () => {
             </div>
 
             <div className="group w-full my-1">
-                <select className="select select-bordered w-full">
+                <select defaultValue={''} className="select select-bordered w-full">
                     <option disabled selected>Events ?</option>
                     <option value={'Income'}>Income</option>
                     <option value={'Expense'}>Expense</option>
                 </select>
             </div>
             <div className="group w-full my-1 mt-3">
-                <select className="select select-bordered w-full">
+                <select defaultValue={''} className="select select-bordered w-full">
                     <option disabled selected>Devise ?</option>
                     <option value={'RWF'}>RWF</option>
                     <option value={'CDF'}>CDF</option>
