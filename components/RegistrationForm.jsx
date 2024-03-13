@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+
+// const url = "http://localhost:3000/api/budget/"
 const url = "http://localhost:3000/api/budget/"
 
 export function RegistrationForm() {
@@ -11,26 +13,37 @@ export function RegistrationForm() {
     const [devise, setDevise] = useState("")
     const [country, setCountry] = useState("")
     const [desc, setDesc] = useState("")
+    const [errors, setErrors] = useState({})
 
     const handleSubmit = async (ev) => {
         ev.preventDefault()
 
-        if (!amount || !devise || !country) {
-            alert("Fill in all fields!")
+        if (!amount || !transEvent || !devise || !country || !desc) {
+            const newErrors = {}
+            if (!amount) newErrors.amount = "Amount is required."
+            if (!transEvent) newErrors.transEvent = "Event type is required."
+            if (!devise) newErrors.devise = "Devise is required."
+            if (!country) newErrors.country = "Country is required."
+            if (!desc) newErrors.desc = "Description is required."
+            setErrors(newErrors)
+
+            // Clear errors after 1000ms
+            setTimeout(() => setErrors({}), 10000)
+
             return
         }
 
         try {
-            const res = await fetch("http://localhost:3000/api/budget/", {
+            const res = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount, event, devise, country, desc })
+                body: JSON.stringify({ amount, transEvent, devise, country, desc })
             })
             if (res.ok) {
                 router.push("/")
                 router.refresh()
             } else {
-                throw new Error("We fail to create this")
+                throw new Error("Failed to create this.")
             }
         } catch (error) {
             throw new Error(error)
@@ -40,8 +53,8 @@ export function RegistrationForm() {
         <>
             <form onSubmit={handleSubmit} method="POST">
                 <div className="group w-full my-1">
-                    <input type="number" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Type The Amount" className="input
-                 input-bordered my-2 input-md w-full" />
+                    <input type="number" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} placeholder="Type The Amount" className="input input-bordered my-2 input-md w-full" />
+                    {errors.amount && <p className="text-red-500">{errors.amount}</p>}
                 </div>
 
                 <div className="group w-full my-1">
@@ -50,24 +63,28 @@ export function RegistrationForm() {
                         <option value={'Income'}>Income</option>
                         <option value={'Expense'}>Expense</option>
                     </select>
+                    {errors.transEvent && <p className="text-red-500">{errors.transEvent}</p>}
                 </div>
+
                 <div className="group w-full my-1 mt-3">
-                    <select className="select select-bordered w-full" defaultValue={""} name="devise" value={devise} onChange={(e) => setDevise(e.target.value)}>
-                        <option velue={''} disabled>Devise ?</option>
-                        <option value={'RWF'}>RWF</option>
-                        <option value={'CDF'}>CDF</option>
-                        <option value={'$'}>$</option>
-                        <option value={'BITCOIN'}>BITCOIN</option>
+                    <select className="select select-bordered w-full" defaultValue={""} value={devise} onChange={(e) => setDevise(e.target.value)}>
+                        <option value={""} disabled >Devise ?</option>
+                        <option value={"RWF"}>RWF</option>
+                        <option value={"CDF"}>CDF</option>
+                        <option value={"$"}>$</option>
+                        <option value={"BITCOIN"}>BITCOIN</option>
                     </select>
+                    {errors.devise && <p className="text-red-500">{errors.devise}</p>}
                 </div>
 
                 <div className="group w-full my-1">
-                    <input type="text" name="country" value={country} onChange={(e) => setCountry(e.target.value)} placeholder="Country" className="input
-                 input-bordered my-2 input-md w-full" />
+                    <input type="text" name="country" value={country} onChange={(e) => setCountry(e.target.value)} placeholder="Country" className="input input-bordered my-2 input-md w-full" />
+                    {errors.country && <p className="text-red-500">{errors.country}</p>}
                 </div>
 
                 <div className="group w-full my-1">
                     <textarea className="textarea textarea-bordered my-2 w-full" value={desc} onChange={(e) => setDesc(e.target.value)} placeholder="Description or Motif"></textarea>
+                    {errors.desc && <p className="text-red-500">{errors.desc}</p>}
                 </div>
 
                 <div className="group my-1">
