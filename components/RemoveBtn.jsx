@@ -18,7 +18,7 @@ const RemoveBtn = () => {
     }
   }
   return (
-    <button className="btn btn-sm btn-error" onClick={removeBudget}>Delete</button>
+    <button className="btn join-item btn-sm btn-error" onClick={removeBudget}>Delete</button>
   )
 }
 
