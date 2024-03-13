@@ -3,8 +3,11 @@ import Budget from "@/app/models/data.model";
 import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {
+
     const { id } = params
+
     await DBconnection();
+
     const budget = await Budget.findById(id)
 
     if (budget) {
