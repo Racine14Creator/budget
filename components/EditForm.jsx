@@ -41,7 +41,7 @@ const EditForm = ({
 
     return (
         <form onSubmit={handleSubmit} method="post">
-
+            <h3 className="text-3xl font-bold">Update</h3>
             <div className="group w-full my-1">
                 <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} name="amount" placeholder="Type here" className="input input-bordered my-2 input-md w-full" />
             </div>
