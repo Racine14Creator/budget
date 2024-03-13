@@ -23,7 +23,10 @@ const EditForm = ({
         try {
             const res = await fetch(`${url}/${id}`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                    "Access-Control-Allow-Origin": "*",
+                    "Content-Type": "application/json"
+                },
                 body: JSON.stringify({ amount, event, devise, country, description })
             })
             if (!res.ok) throw new Error("Failed to Upated this")
