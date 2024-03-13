@@ -21,8 +21,16 @@ export async function GET() {
 
     return NextResponse.json({ budgets }, { status: 200 })
 }
-export async function DELETE() {
+export async function DELETE(req) {
+    
+    const id = req.nextUrl.searchParams.get("id")
+
     await DBconnection()
 
-    return NextResponse.json({ message: "DELETE" })
+    const event = await Budget.findByIdAndDelete(id)
+    if (event) {
+        return NextResponse.json({ message: "Budget Deleted" }, { status: 201 })
+    } else {
+        return NextResponse.json({ message: "Someting went wrong..." })
+    }
 }
