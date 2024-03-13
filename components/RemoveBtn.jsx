@@ -13,7 +13,10 @@ const RemoveBtn = ({ id }) => {
     if (confirmed) {
       const res = await fetch(`${url}/?id=${id}`, { method: "DELETE" })
 
-      if (res.ok) router.refresh()
+      if (res.ok) {
+        router.refresh()
+        router.push('/')
+      }
     }
   }
   return (
