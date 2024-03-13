@@ -3,7 +3,7 @@
 import EditForm from '@/components/EditForm';
 import { useEffect, useState } from 'react';
 
-const url = 'http://localhost:3000/api/budget/';
+const url = 'https://budget-beta-ten.vercel.app/api/budget';
 
 const EditOne = ({ params }) => {
     const { id } = params;
