@@ -4,7 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 
 // const url = "http://localhost:3000/api/budget/"
-const url = "http://localhost:3000/api/budget/"
+const url = "https://budget-beta-ten.vercel.app/api/budget"
 
 export function RegistrationForm() {
     const router = useRouter()
@@ -34,7 +34,7 @@ export function RegistrationForm() {
         }
 
         try {
-            const res = await fetch(url, {
+            const res = await fetch(`${url}/`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ amount, transEvent, devise, country, desc })

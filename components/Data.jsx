@@ -4,11 +4,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 // const url = "http://localhost:3000";
-const url = "http://localhost:3000";
+const url = "https://budget-beta-ten.vercel.app/api/budget";
 
 const getData = async () => {
     try {
-        const res = await fetch(`${url}/api/budget`, { cache: 'no-store' });
+        const res = await fetch(`${url}/`, { cache: 'no-store' });
 
         if (!res.ok) {
             throw new Error("Failed to fetch Data...");

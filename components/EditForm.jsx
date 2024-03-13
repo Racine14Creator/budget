@@ -19,9 +19,9 @@ const EditForm = ({
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        const url = "http://localhost:3000"
+        const url = "https://budget-beta-ten.vercel.app/api/budget"
         try {
-            const res = await fetch(`${url}/api/budget/${id}`, {
+            const res = await fetch(`${url}/${id}`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ amount, event, devise, country, description })
@@ -38,8 +38,7 @@ const EditForm = ({
 
     return (
         <form onSubmit={handleSubmit} method="post">
-            <h3>Amount: {amount}</h3>
-            <h3>Id: {id}</h3>
+
             <div className="group w-full my-1">
                 <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} name="amount" placeholder="Type here" className="input input-bordered my-2 input-md w-full" />
             </div>
