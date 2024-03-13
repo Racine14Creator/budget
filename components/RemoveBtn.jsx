@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation"
 
-// const url = "http://localhost:3000/api/budget/"
 const url = "https://budget-beta-ten.vercel.app/api/budget"
 
 const RemoveBtn = ({ id }) => {
@@ -12,7 +11,7 @@ const RemoveBtn = ({ id }) => {
     const confirmed = confirm("Do you want to delete this...")
 
     if (confirmed) {
-      const res = await fetch(`${url}/?id=_${id}`, { method: "DELETE" })
+      const res = await fetch(`${url}/?id=${id}`, { method: "DELETE" })
 
       if (res.ok) router.refresh()
     }

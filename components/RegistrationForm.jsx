@@ -3,7 +3,6 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 
-// const url = "http://localhost:3000/api/budget/"
 const url = "https://budget-beta-ten.vercel.app/api/budget"
 
 export function RegistrationForm() {

@@ -22,6 +22,7 @@ export default corsMiddleware(async (req, res) => {
         const { id } = req.query;
         await DBconnection();
         const budget = await Budget.findById(id);
+
         if (budget) {
             return NextResponse.json({ budget }, { status: 200 });
         } else {
