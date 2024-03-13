@@ -1,31 +1,50 @@
-import EditForm from '@/components/EditForm'
+"use client";
 
-const url = "http://localhost:3000/api/budget/"
-const getOneBudget = async function (id) {
-    try {
-        const res = await fetch(`${url}/${id}`, { cache: 'no-store' })
+import EditForm from '@/components/EditForm';
+import { useEffect, useState } from 'react';
 
-        if (!res.ok) throw new Error("Failed to fetch this data")
+const url = 'http://localhost:3000/api/budget/';
 
-        return res.json()
+const EditOne = ({ params }) => {
+    const { id } = params;
+    const [budget, setBudget] = useState(null);
 
-    } catch (error) {
-        console.log(error);
-    }
-}
+    useEffect(() => {
+        const fetchBudget = async () => {
+            try {
 
-const EditOne = async ({ params }) => {
-    const { id } = params
-    const budget = await getOneBudget(id)
+                const res = await fetch(`${url}/${id}`, { cache: 'no-store' });
 
-    console.log(budget)
+                if (!res.ok) throw new Error('Failed to fetch this data');
+
+                const fetchedBudget = await res.json();
+
+                setBudget(fetchedBudget.budget);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchBudget();
+    }, [id]);
 
     return (
         <>
             <h3 className="text-3xl font-bold">Update</h3>
-            <EditForm />
+            {console.log(budget)}
+            {budget && (
+                <EditForm
+                    id={budget._id}
+                    amount={budget.amount}
+                    country={budget.country}
+                    event={budget.event}
+                    devise={budget.devise}
+                    desc={budget.description}
+                />
+            )}
+            {!budget && <p>Loading...</p>}
         </>
-    )
-}
+    );
+};
 
-export default EditOne
+export default EditOne;
