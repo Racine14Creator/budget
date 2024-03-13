@@ -18,7 +18,7 @@ const RemoveBtn = () => {
     }
   }
   return (
-    <button className="text-red-400" onClick={removeBudget}>Delete</button>
+    <button className="btn btn-sm btn-error" onClick={removeBudget}>Delete</button>
   )
 }
 
