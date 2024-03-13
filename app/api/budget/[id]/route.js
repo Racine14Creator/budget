@@ -1,6 +1,7 @@
 import DBconnection from "@/app/libs/mongodb.config";
 import Budget from "@/app/models/data.model";
 import { NextResponse } from "next/server";
+import corsMiddleware from "../../cors";
 
 // Middleware to set CORS headers
 const allowCors = (handler) => async (req, res) => {
@@ -14,7 +15,9 @@ const allowCors = (handler) => async (req, res) => {
     return handler(req, res);
 };
 
-export default allowCors(async (req, res) => {
+
+
+export default corsMiddleware(async (req, res) => {
     if (req.method === "GET") {
         const { id } = req.query;
         await DBconnection();
