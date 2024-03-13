@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import RemoveBtn from "./RemoveBtn";
 
 // const url = "http://localhost:3000";
 const url = "https://budget-beta-ten.vercel.app/api/budget";
@@ -76,7 +77,7 @@ const Data = () => {
                                     <td>
                                         <div className="join">
                                             <Link href={`/edit/${b._id}`} className="btn join-item btn-sm btn-primary">Edit</Link>
-                                            <button className="btn join-item btn-sm btn-error">Delete</button>
+                                            <RemoveBtn id={b._id} />
                                         </div>
                                     </td>
                                 </tr>
