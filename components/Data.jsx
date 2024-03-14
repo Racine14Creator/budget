@@ -36,7 +36,6 @@ const Data = () => {
 
             if (res.ok) {
                 router.refresh()
-                router.push('/')
             }
         }
     }
