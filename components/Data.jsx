@@ -22,13 +22,16 @@ const getData = async () => {
 
 
 const Data = () => {
+
     const [isLoading, setIsLoading] = useState(true);
     const [budgets, setBudgets] = useState([]);
 
     const removeBudget = async function (id) {
+
         const confirmed = confirm("Do you want to delete this...")
 
         if (confirmed) {
+
             const res = await fetch(`https://budget-beta-ten.vercel.app/api/budget/?id=${id}`, { method: "DELETE" })
 
             if (res.ok) {
