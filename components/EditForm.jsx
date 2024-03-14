@@ -10,12 +10,6 @@ const EditForm = ({
     country: initialCountry,
     desc: initialDesc }) => {
 
-    const [amount, setAmount] = useState(initialAmount);
-    const [event, setEvent] = useState(initialEvent || '');
-    const [country, setCountry] = useState(initialCountry || '');
-    const [devise, setDevise] = useState(initialDevise || '');
-    const [description, setDescription] = useState(initialDesc || '');
-    const router = useRouter()
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -37,6 +31,14 @@ const EditForm = ({
             console.log(error);
         }
     }
+
+    const [amount, setAmount] = useState(initialAmount);
+    const [event, setEvent] = useState(initialEvent || '');
+    const [country, setCountry] = useState(initialCountry || '');
+    const [devise, setDevise] = useState(initialDevise || '');
+    const [description, setDescription] = useState(initialDesc || '');
+
+    const router = useRouter()
 
     return (
         <form onSubmit={handleSubmit} method="post">
