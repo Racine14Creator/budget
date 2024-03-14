@@ -3,7 +3,6 @@
 import EditForm from '@/components/EditForm';
 import { useEffect, useState } from 'react';
 
-// const url = "http://localhost:3000/api/budget";
 const url = 'https://budget-beta-ten.vercel.app/api/budget';
 
 const EditOne = ({ params }) => {
@@ -14,7 +13,7 @@ const EditOne = ({ params }) => {
         const fetchBudget = async () => {
             try {
 
-                const res = await fetch(`${url}/${id}`, { cache: 'no-store' });
+                const res = await fetch(`https://budget-beta-ten.vercel.app/api/budget/${id}`, { cache: 'no-store' });
 
                 if (!res.ok) throw new Error('Failed to fetch this data');
 
