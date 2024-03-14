@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation"
 
 const url = "https://budget-beta-ten.vercel.app/api/budget"
-// const url = "http://localhost:3000/api/budget";
 
 const RemoveBtn = ({ id }) => {
   const router = useRouter()
