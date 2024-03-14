@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-// const url = "http://localhost:3000";
+// const url = "http://localhost:3000/api/budget";
 const url = "https://budget-beta-ten.vercel.app/api/budget";
 
 const getData = async () => {
@@ -42,7 +42,9 @@ const Data = () => {
     return (
         <div className="overflow-x-auto">
             {isLoading ? (
-                <p>Loading...</p>
+                <div className="flex w-full justify-center items-center p-20 mx-auto">
+                    <span className="loading loading-infinity loading-lg"></span>
+                </div>
             ) : (
                 <>
                     <form action="#" method="post">
