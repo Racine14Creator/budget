@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import RemoveBtn from "./RemoveBtn";
 
 // const url = "http://localhost:3000/api/budget";
 const url = "https://budget-beta-ten.vercel.app/api/budget";
@@ -22,9 +21,24 @@ const getData = async () => {
     }
 };
 
+
+
 const Data = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [budgets, setBudgets] = useState([]);
+
+    const removeBudget = async function (id) {
+        const confirmed = confirm("Do you want to delete this...")
+
+        if (confirmed) {
+            const res = await fetch(`${url}/?id=${id}`, { method: "DELETE" })
+
+            if (res.ok) {
+                router.refresh()
+                router.push('/')
+            }
+        }
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -79,7 +93,7 @@ const Data = () => {
                                     <td>
                                         <div className="join">
                                             <Link href={`/edit/${b._id}`} className="btn join-item btn-sm btn-primary">Edit</Link>
-                                            <RemoveBtn id={b._id} />
+                                            <button className="btn join-item btn-sm btn-error" onClick={removeBudget(b._id)}>Delete</button>
                                         </div>
                                     </td>
                                 </tr>
