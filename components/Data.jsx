@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import RemoveBtn from "./RemoveBtn";
 
 // const url = "http://localhost:3000/api/budget";
 const url = "https://budget-beta-ten.vercel.app/api/budget";
