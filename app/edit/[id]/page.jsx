@@ -41,7 +41,7 @@ const EditOne = ({ params }) => {
                     desc={budget.description}
                 />
             )}
-            {!budget && <span className="loading loading-bars loading-lg"></span>}
+            {!budget && <span className="loading loading-bars loading-lg mx-auto"></span>}
         </>
     );
 };
