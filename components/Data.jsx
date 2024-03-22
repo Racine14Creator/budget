@@ -13,6 +13,7 @@ const getData = async () => {
         }
 
         return res.json();
+
     } catch (error) {
         console.error(error);
         throw new Error(error);
@@ -93,7 +94,7 @@ const Data = () => {
                                     <td>
                                         <div className="join">
                                             <Link href={`/edit/${b._id}`} className="btn join-item btn-sm btn-primary">Edit</Link>
-                                            <button className="btn join-item btn-sm btn-error" onClick={removeBudget(b._id)}>Delete</button>
+                                            <button className="btn join-item btn-sm btn-error" onClick={() => removeBudget(b._id)}>Delete</button>
                                         </div>
                                     </td>
                                 </tr>
