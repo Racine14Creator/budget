@@ -23,7 +23,7 @@ const EditForm = ({
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ amount, event, devise, country, description: desc })
+                body: JSON.stringify({ amount, event, devise, country, description })
             })
 
             if (!res.ok) throw new Error("Failed to Upated this")

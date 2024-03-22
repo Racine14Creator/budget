@@ -3,8 +3,11 @@ import Budget from "@/app/models/data.model";
 import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {
+
     const { id } = params;
+
     await DBconnection();
+
     const budget = await Budget.findById(id);
 
     if (budget) {
@@ -23,13 +26,13 @@ export async function PUT(request, { params }) {
 
     await DBconnection();
 
-    const { amount, event, devise, desc, country } = await request.json();
+    const { amount, event, devise, description, country } = await request.json();
 
     const budget = await Budget.findByIdAndUpdate(id, {
         amount,
         event,
         devise,
-        description: desc,
+        desc: description,
         country,
     });
     if (budget) {
