@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 const url = 'https://budget-beta-ten.vercel.app';
 
 const EditForm = ({
-    id, amount: initialAmount,
+    id,
+    amount: initialAmount,
     event: initialEvent,
     devise: initialDevise,
     country: initialCountry,
@@ -22,7 +23,7 @@ const EditForm = ({
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ amount, event, devise, country, description })
+                body: JSON.stringify({ amount, event, devise, country, description: desc })
             })
 
             if (!res.ok) throw new Error("Failed to Upated this")
