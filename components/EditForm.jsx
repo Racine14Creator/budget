@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
+const url = 'https://budget-beta-ten.vercel.app';
+
 const EditForm = ({
     id, amount: initialAmount,
     event: initialEvent,
@@ -14,7 +16,7 @@ const EditForm = ({
         e.preventDefault()
 
         try {
-            const res = await fetch(`http://localhost:3000/api/budget/${id}`, {
+            const res = await fetch(`${url}/api/budget/${id}`, {
                 method: "PUT",
                 headers: {
                     "Access-Control-Allow-Origin": "*",

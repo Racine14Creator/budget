@@ -3,7 +3,7 @@
 import EditForm from '@/components/EditForm';
 import { useEffect, useState } from 'react';
 
-const url = 'https://budget-beta-ten.vercel.app/api/budget';
+const url = 'https://budget-beta-ten.vercel.app';
 
 const EditOne = ({ params }) => {
     const { id } = params;
@@ -13,7 +13,7 @@ const EditOne = ({ params }) => {
         const fetchBudget = async () => {
             try {
 
-                const res = await fetch(`http://localhost:3000/api/budget/${id}`, { cache: 'no-store' });
+                const res = await fetch(`${url}/api/budget/${id}`, { cache: 'no-store' });
 
                 if (!res.ok) throw new Error('Failed to fetch this data');
 
@@ -31,8 +31,6 @@ const EditOne = ({ params }) => {
 
     return (
         <>
-
-            {/* {console.log(budget)} */}
             {budget && (
                 <EditForm
                     id={budget._id}
