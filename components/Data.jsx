@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 const getData = async () => {
     try {
-        const res = await fetch(`https://budget-beta-ten.vercel.app/api/budget/`, { cache: 'no-store' });
+        const res = await fetch(`http://localhost:3000/api/budget`, { cache: 'no-store' });
 
         if (!res.ok) {
             throw new Error("Failed to fetch Data...");
@@ -21,24 +21,31 @@ const getData = async () => {
 
 
 
+const removeBudget = async function (id) {
+
+    const confirmed = confirm("Do you want to delete this...")
+
+    if (confirmed) {
+
+        const res = await fetch(`http://localhost:3000/api/budget/?id=${id}`, {
+            cach: "no-store",
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }
+        )
+
+        if (res.ok) {
+            router.refresh()
+        }
+    }
+}
+
 const Data = () => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [budgets, setBudgets] = useState([]);
-
-    const removeBudget = async function (id) {
-
-        const confirmed = confirm("Do you want to delete this...")
-
-        if (confirmed) {
-
-            const res = await fetch(`https://budget-beta-ten.vercel.app/api/budget/?id=${id}`, { method: "DELETE" })
-
-            if (res.ok) {
-                router.refresh()
-            }
-        }
-    }
 
     useEffect(() => {
         const fetchData = async () => {

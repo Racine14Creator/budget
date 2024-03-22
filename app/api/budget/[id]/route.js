@@ -17,43 +17,71 @@ const allowCors = (handler) => async (req, res) => {
 
 
 
-export default corsMiddleware(async (req, res) => {
-    if (req.method === "GET") {
-        const { id } = req.query;
-        await DBconnection();
-        const budget = await Budget.findById(id);
+export async function GET(req, { params }) {
+    const { id } = params;
+    await DBconnection();
+    const budget = await Budget.findById(id);
 
-        if (budget) {
-            return NextResponse.json({ budget }, { status: 200 });
-        } else {
-            return NextResponse.json(
-                { message: "We can't find this..." },
-                { status: 404 }
-            );
-        }
-    } else if (req.method === "PUT") {
-        const { id } = req.query;
-        await DBconnection();
-        const { amount, event, devise, desc, country } = await req.body;
-        const budget = await Budget.findByIdAndUpdate(id, {
-            amount,
-            event,
-            devise,
-            description: desc,
-            country,
-        });
-        if (budget) {
-            return NextResponse.json({ budget }, { status: 200 });
-        } else {
-            return NextResponse.json(
-                { message: "Something went wrong" },
-                { status: 500 }
-            );
-        }
+    if (budget) {
+        return NextResponse.json({ budget }, { status: 200 });
     } else {
-        return NextResponse.error(
-            new Error(`Method ${req.method} Not Allowed`),
-            { status: 405 }
+        return NextResponse.json(
+            { message: "We can't find this..." },
+            { status: 404 }
         );
     }
-});
+}
+
+export async function PUT(request, { params }) {
+
+    const { id } = params;
+
+    await DBconnection();
+
+    const { amount, event, devise, desc, country } = await request.json();
+
+    const budget = await Budget.findByIdAndUpdate(id, {
+        amount,
+        event,
+        devise,
+        description: desc,
+        country,
+    });
+    if (budget) {
+        return NextResponse.json({ budget }, { status: 200 });
+    } else {
+        return NextResponse.json(
+            { message: "Something went wrong" },
+            { status: 500 }
+        );
+    }
+}
+// export default corsMiddleware(async (req, res) => {
+//     if (req.method === "GET") {
+
+//     } else if (req.method === "PUT") {
+//         const { id } = req.query;
+//         await DBconnection();
+//         const { amount, event, devise, desc, country } = await req.body;
+//         const budget = await Budget.findByIdAndUpdate(id, {
+//             amount,
+//             event,
+//             devise,
+//             description: desc,
+//             country,
+//         });
+//         if (budget) {
+//             return NextResponse.json({ budget }, { status: 200 });
+//         } else {
+//             return NextResponse.json(
+//                 { message: "Something went wrong" },
+//                 { status: 500 }
+//             );
+//         }
+//     } else {
+//         return NextResponse.error(
+//             new Error(`Method ${req.method} Not Allowed`),
+//             { status: 405 }
+//         );
+//     }
+// });

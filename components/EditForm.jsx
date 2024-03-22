@@ -14,17 +14,18 @@ const EditForm = ({
         e.preventDefault()
 
         try {
-            const res = await fetch(`https://budget-beta-ten.vercel.app/api/budget/${id}`, {
-                method: "POST",
+            const res = await fetch(`http://localhost:3000/api/budget/${id}`, {
+                method: "PUT",
                 headers: {
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ amount, event, devise, country, description })
             })
+
             if (!res.ok) throw new Error("Failed to Upated this")
 
-            router.reload()
+            router.refresh()
             router.push("/")
 
         } catch (error) {

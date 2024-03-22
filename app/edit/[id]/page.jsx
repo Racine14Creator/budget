@@ -13,13 +13,14 @@ const EditOne = ({ params }) => {
         const fetchBudget = async () => {
             try {
 
-                const res = await fetch(`https://budget-beta-ten.vercel.app/api/budget/${id}`, { cache: 'no-store' });
+                const res = await fetch(`http://localhost:3000/api/budget/${id}`, { cache: 'no-store' });
 
                 if (!res.ok) throw new Error('Failed to fetch this data');
 
                 const fetchedBudget = await res.json();
 
                 setBudget(fetchedBudget.budget);
+
             } catch (error) {
                 console.error(error);
             }
@@ -31,7 +32,7 @@ const EditOne = ({ params }) => {
     return (
         <>
 
-            {console.log(budget)}
+            {/* {console.log(budget)} */}
             {budget && (
                 <EditForm
                     id={budget._id}
