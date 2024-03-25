@@ -1,20 +1,21 @@
 "use client";
 
+import { useApiContext } from '@/app/apiContext';
+
 import EditForm from '@/components/EditForm';
 import { useEffect, useState } from 'react';
 
-// const url = 'https://budget-beta-ten.vercel.app';
-const url = 'http://localhost:3000';
-
 const EditOne = ({ params }) => {
+
+    const apiUrl = useApiContext();
+
     const { id } = params;
     const [budget, setBudget] = useState(null);
 
     useEffect(() => {
         const fetchBudget = async () => {
             try {
-
-                const res = await fetch(`${url}/api/budget/${id}`, { cache: 'no-store' });
+                const res = await fetch(`${apiUrl}/api/budget/${id}`, { cache: 'no-store' });
 
                 if (!res.ok) throw new Error('Failed to fetch this data');
 

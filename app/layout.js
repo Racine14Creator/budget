@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
         <div className="drawer">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
-            <div className="absolute bg-base-300">
+            <div className="bg-base-300">
               <div className="max-w-[1000px] mx-auto navbar">
                 <div className="flex-none lg:hidden">
                   <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">

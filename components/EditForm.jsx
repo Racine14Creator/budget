@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useApiContext } from "@/app/apiContext";
 
-// const url = 'https://budget-beta-ten.vercel.app';
-const url = 'http://localhost:3000';
 
 const EditForm = ({
     id,
@@ -14,12 +13,15 @@ const EditForm = ({
     country: initialCountry,
     desc: initialDesc }) => {
 
+    const apiUrl = useApiContext()
+    // console.log(apiUrl)
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
 
         try {
-            const res = await fetch(`${url}/api/budget/${id}`, {
+            const res = await fetch(`${apiUrl}/api/budget/${id}`, {
                 method: "PUT",
                 headers: {
                     "Access-Control-Allow-Origin": "*",
