@@ -26,8 +26,10 @@ export async function GET() {
     return NextResponse.json({ budgets }, { status: 200 });
 }
 
-export async function DELETE(req, { params }) {
-    const { id } = params;
+export async function DELETE(request) {
+    const id = request.nextUrl.searchParams.get("id")
+
+    console.log(id)
 
     await DBconnection();
 

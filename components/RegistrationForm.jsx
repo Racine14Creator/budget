@@ -2,12 +2,12 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { useApiContext } from '@/app/apiContext';
 
+// const url = "http://localhost:3000"
+const url = "https://budget-beta-ten.vercel.app/"
 
 export function RegistrationForm() {
 
-    const apiUrl = useApiContext()
 
     const router = useRouter()
     const [amount, setAmount] = useState("")
@@ -36,7 +36,7 @@ export function RegistrationForm() {
         }
 
         try {
-            const res = await fetch(`${apiUrl}/api/budget`, {
+            const res = await fetch(`${url}/api/budget`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ amount, transEvent, devise, country, desc })

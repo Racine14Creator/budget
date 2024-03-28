@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 const url = "http://localhost:3000"
+
 const getData = async () => {
+
     try {
         const res = await fetch(`${url}/api/budget`, { cache: 'no-store' });
 
@@ -26,6 +29,7 @@ const Data = () => {
 
     const [isLoading, setIsLoading] = useState(true);
     const [budgets, setBudgets] = useState([]);
+    const router = useRouter()
 
     const removeBudget = async function (id) {
 
@@ -37,6 +41,7 @@ const Data = () => {
 
             if (res.ok) {
                 router.refresh()
+                router.push("/data")
             }
         }
     }

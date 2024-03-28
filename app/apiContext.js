@@ -10,5 +10,7 @@ export const useApiContext = () => {
 
 // API provider component
 export const ApiProvider = ({ apiUrl, children }) => {
-  return <ApiContext.Provider value={apiUrl}>{children}</ApiContext.Provider>;
+  return <ApiContext.Provider value={apiUrl}>
+    {children}
+  </ApiContext.Provider>;
 };
