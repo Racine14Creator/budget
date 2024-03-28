@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const url = "http://localhost:3000"
+// const url = "http://localhost:3000"
+const url = "https://budget-beta-ten.vercel.app/"
 
 const getData = async () => {
 
