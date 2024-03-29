@@ -1,26 +1,29 @@
 "use client";
 
-import { useApiContext } from '@/app/apiContext';
 import EditForm from '@/components/EditForm';
+import { useRouter } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 
-const url = "https://budget-beta-ten.vercel.app/"
-// const url = "http://localhost:3000"
+// const url = "https://budget-beta-ten.vercel.app/"
+const url = "http://localhost:3000"
 
 const EditOne = ({ params }) => {
-
-
+    const router = useRouter()
 
     const { id } = params;
     const [budget, setBudget] = useState(null);
 
     useEffect(() => {
+
         const fetchBudget = async () => {
             try {
                 const res = await fetch(`${url}/api/budget/${id}`, { cache: 'no-store' });
 
-                if (!res.ok) throw new Error('Failed to fetch this data');
+                if (!res.ok) {
+                    router.push("/data")
+                    throw new Error('Failed to fetch this data')
+                };
 
                 const fetchedBudget = await res.json();
 
@@ -43,6 +46,7 @@ const EditOne = ({ params }) => {
                     country={budget.country}
                     event={budget.event}
                     devise={budget.devise}
+                    date={budget.date}
                     desc={budget.description}
                 />
             )}

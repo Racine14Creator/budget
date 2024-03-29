@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 
 export async function POST(req) {
-    const { amount, transEvent, devise, desc, country } = await req.json();
+    const { amount, transEvent, devise, desc, date, country } = await req.json();
 
     await DBconnection();
 
@@ -13,6 +13,7 @@ export async function POST(req) {
         event: transEvent,
         devise,
         description: desc,
+        date,
         country,
     });
 

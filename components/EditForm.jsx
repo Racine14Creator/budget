@@ -3,12 +3,13 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-// const url = "http://localhost:3000"
-const url = "https://budget-beta-ten.vercel.app/"
+const url = "http://localhost:3000"
+// const url = "https://budget-beta-ten.vercel.app/"
 
 const EditForm = ({
     id,
     amount: initialAmount,
+    date: initialDate,
     event: initialEvent,
     devise: initialDevise,
     country: initialCountry,
@@ -26,7 +27,7 @@ const EditForm = ({
                     "Access-Control-Allow-Origin": "*",
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ amount, event, devise, country, description })
+                body: JSON.stringify({ amount, event, devise, date, country, description })
             })
 
             if (!res.ok) throw new Error("Failed to Upated this")
@@ -41,6 +42,7 @@ const EditForm = ({
 
     const [amount, setAmount] = useState(initialAmount);
     const [event, setEvent] = useState(initialEvent || '');
+    const [date, setDate] = useState(initialDate || '');
     const [country, setCountry] = useState(initialCountry || '');
     const [devise, setDevise] = useState(initialDevise || '');
     const [description, setDescription] = useState(initialDesc || '');
@@ -72,6 +74,9 @@ const EditForm = ({
                 </select>
             </div>
 
+            <div className="group w-full my-1">
+                <input type="date" value={date} onChange={(e) => setDate(e.target.value)} name="date" className="input input-bordered my-2 input-md w-full" />
+            </div>
             <div className="group w-full my-1">
                 <input type="text" value={country} onChange={(e) => setCountry(e.target.value)} name="amount" placeholder="Country" className="input input-bordered my-2 input-md w-full" />
             </div>

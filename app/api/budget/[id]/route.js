@@ -26,7 +26,7 @@ export async function PUT(request, { params }) {
 
     await DBconnection();
 
-    const { amount, event, devise, description, country } = await request.json();
+    const { amount, event, devise, description, date, country } = await request.json();
 
     const budget = await Budget.findByIdAndUpdate(id, {
         amount,
@@ -34,6 +34,7 @@ export async function PUT(request, { params }) {
         devise,
         description,
         country,
+        date
     });
     if (budget) {
         return NextResponse.json({ budget }, { status: 200 });

@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-// const url = "http://localhost:3000"
-const url = "https://budget-beta-ten.vercel.app/"
+const url = "http://localhost:3000"
+// const url = "https://budget-beta-ten.vercel.app/"
 
 const getData = async () => {
 
@@ -41,8 +41,7 @@ const Data = () => {
             const res = await fetch(`${url}/api/budget/?id=${id}`, { method: "DELETE" })
 
             if (res.ok) {
-                router.refresh()
-                router.push("/data")
+                router.refresh();
             }
         }
     }
@@ -87,24 +86,25 @@ const Data = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {budgets.map(b => (
-                                <tr key={b._id} className="rounded-full">
-                                    <td>{b.amount + " " + b.devise}</td>
-                                    <td>
-                                        <span className={"badge badge-" + (b.event === "Expense" ? "error" : "success")}>{b.event}</span>
-                                    </td>
-                                    <td>
-                                        <span className={"badge badge-" + (b.devise === "RWF" ? "success" : "warning")}>{b.devise}</span>
-                                    </td>
-                                    <td>{b.description}</td>
-                                    <td>
-                                        <div className="join">
-                                            <Link href={`/edit/${b._id}`} className="btn join-item btn-sm btn-primary">Edit</Link>
-                                            <button className="btn join-item btn-sm btn-error" onClick={() => removeBudget(b._id)}>Delete</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
+                            {
+                                budgets.map(b => (
+                                    <tr key={b._id} className="rounded-full">
+                                        <td>{b.amount + " " + b.devise}</td>
+                                        <td>
+                                            <span className={"badge badge-" + (b.event === "Expense" ? "error" : "success")}>{b.event}</span>
+                                        </td>
+                                        <td>
+                                            <span className={"badge badge-" + (b.devise === "RWF" ? "success" : "warning")}>{b.devise}</span>
+                                        </td>
+                                        <td>{b.description}</td>
+                                        <td>
+                                            <div className="join">
+                                                <Link href={`/edit/${b._id}`} className="btn join-item btn-sm btn-primary">Edit</Link>
+                                                <button className="btn join-item btn-sm btn-error" onClick={() => removeBudget(b._id)}>Delete</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                ))}
                         </tbody>
                     </table>
                 </>

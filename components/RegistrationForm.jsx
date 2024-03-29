@@ -3,8 +3,8 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 
-// const url = "http://localhost:3000"
-const url = "https://budget-beta-ten.vercel.app/"
+const url = "http://localhost:3000"
+// const url = "https://budget-beta-ten.vercel.app/"
 
 export function RegistrationForm() {
 
@@ -15,6 +15,7 @@ export function RegistrationForm() {
     const [devise, setDevise] = useState("")
     const [country, setCountry] = useState("")
     const [desc, setDesc] = useState("")
+    const [date, setDate] = useState("")
     const [errors, setErrors] = useState({})
 
     const handleSubmit = async (ev) => {
@@ -26,6 +27,7 @@ export function RegistrationForm() {
             if (!transEvent) newErrors.transEvent = "Event type is required."
             if (!devise) newErrors.devise = "Devise is required."
             if (!country) newErrors.country = "Country is required."
+            if (!date) newErrors.country = "Date is required."
             if (!desc) newErrors.desc = "Description is required."
             setErrors(newErrors)
 
@@ -39,7 +41,7 @@ export function RegistrationForm() {
             const res = await fetch(`${url}/api/budget`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ amount, transEvent, devise, country, desc })
+                body: JSON.stringify({ amount, transEvent, devise, date, country, desc })
             })
             if (res.ok) {
                 router.push("/data")
@@ -81,6 +83,10 @@ export function RegistrationForm() {
 
                 <div className="group w-full my-1">
                     <input type="text" name="country" value={country} onChange={(e) => setCountry(e.target.value)} placeholder="Country" className="input input-bordered my-2 input-md w-full" />
+                    {errors.country && <p className="text-red-500">{errors.country}</p>}
+                </div>
+                <div className="group w-full my-1">
+                    <input type="date" name="date" value={date} onChange={(e) => setDate(e.target.value)} placeholder="Date" className="input input-bordered my-2 input-md w-full" />
                     {errors.country && <p className="text-red-500">{errors.country}</p>}
                 </div>
 
