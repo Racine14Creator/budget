@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const url = "http://localhost:3000"
-// const url = "https://budget-beta-ten.vercel.app/"
+const url = "https://budget-beta-ten.vercel.app"
 
 const EditForm = ({
     id,

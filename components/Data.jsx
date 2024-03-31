@@ -4,12 +4,14 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const url = process.env.URL
-// const url = "https://budget-beta-ten.vercel.app/"
+// const url = process.env.URL
+
+const url = "https://budget-beta-ten.vercel.app"
 
 const getData = async () => {
 
     try {
+
         const res = await fetch(`${url}/api/budget`, { cache: 'no-store' });
 
         if (!res.ok) {
