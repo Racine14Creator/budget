@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 
-// const url = "https://budget-beta-ten.vercel.app/"
-const url = "http://localhost:3000"
+const url = "https://budget-beta-ten.vercel.app"
+// const url = "http://localhost:3000"
 
 const EditOne = ({ params }) => {
     const router = useRouter()
