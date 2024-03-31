@@ -3,12 +3,12 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 
-const url = "http://localhost:3000"
+const url = process.env.URL
 // const url = "https://budget-beta-ten.vercel.app/"
 
 export function RegistrationForm() {
 
-
+    console.log(url)
     const router = useRouter()
     const [amount, setAmount] = useState("")
     const [transEvent, setTransEvent] = useState("")
@@ -22,6 +22,7 @@ export function RegistrationForm() {
         ev.preventDefault()
 
         if (!amount || !transEvent || !devise || !country || !desc) {
+
             const newErrors = {}
             if (!amount) newErrors.amount = "Amount is required."
             if (!transEvent) newErrors.transEvent = "Event type is required."
