@@ -1,29 +1,23 @@
 "use client"
 
 import Link from "next/link"
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
+import {RegisterLink, LoginLink} from "@kinde-oss/kinde-auth-nextjs/components";
 import { usePathname } from "next/navigation"
+import UserNav from "@/components/UserNav";
 
-const NavLinks = [
-  { id: 1, label: "Dashboard", href: "/", Icon: "" },
-  { id: 2, label: "Profile", href: "/profile", Icon: "" },
-  { id: 3, label: "Data", href: "/data", Icon: "" },
-  { id: 4, label: "Add data", href: "/register", Icon: "" },
-]
-export default function Navbar(){
+
+export default async function Navbar(){
+    const { isAuthenticated } = useKindeBrowserClient();
     
     const pathname = usePathname()
     // console.log(pathname)
-    return (
-        <>
-        {
-            NavLinks.map((n) => (
-                  <li key={n.id}>
-                    <Link href={n.href} className={`${pathname === n.href ? 'bg-white text-black' : 'bg-transparent'}`}>
-                      {n.label}
-                    </Link>
-                  </li>
-                ))
-        }
-        </>
-    )
+    return isAuthenticated ? (
+    <UserNav/>
+  ) : (
+    <>
+        <li><LoginLink>Sign In</LoginLink></li>
+        <li><RegisterLink className="bg-white text-black">Sign Up</RegisterLink></li>
+    </>
+  );
 }
