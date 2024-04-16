@@ -30,7 +30,7 @@ export async function GET() {
 export async function DELETE(request) {
     const id = request.nextUrl.searchParams.get("id")
 
-    console.log(id)
+    // console.log(id)
 
     await DBconnection();
 
