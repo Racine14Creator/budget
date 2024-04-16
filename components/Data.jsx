@@ -6,10 +6,13 @@ import { useRouter } from "next/navigation";
 
 // const url = process.env.URL
 
-const url = "https://budget-beta-ten.vercel.app"
+// const url = "https://budget-beta-ten.vercel.app"
 
+// const url = process.env.URL /*"http://localhost:3000"*/
+const url = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
+console.log(url)
 const getData = async () => {
-
+    
     try {
 
         const res = await fetch(`${url}/api/budget`, { cache: 'no-store' });
@@ -43,6 +46,7 @@ const Data = () => {
             const res = await fetch(`${url}/api/budget/?id=${id}`, { method: "DELETE" })
 
             if (res.ok) {
+                router.push('/data')
                 router.refresh();
             }
         }

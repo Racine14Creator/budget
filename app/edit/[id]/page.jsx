@@ -5,10 +5,12 @@ import { useRouter } from 'next/navigation';
 
 import { useEffect, useState } from 'react';
 
-const url = "https://budget-beta-ten.vercel.app"
+// const url = "https://budget-beta-ten.vercel.app"
 // const url = "http://localhost:3000"
 
 const EditOne = ({ params }) => {
+    const url = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
+
     const router = useRouter()
 
     const { id } = params;

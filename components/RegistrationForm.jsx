@@ -3,11 +3,14 @@
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 
-const url = "https://budget-beta-ten.vercel.app"
+// const url = "https://budget-beta-ten.vercel.app"
+// const url = 'http://localhost:3000'
 
 export function RegistrationForm() {
+    const url = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
 
     const router = useRouter()
+
     const [amount, setAmount] = useState("")
     const [transEvent, setTransEvent] = useState("")
     const [devise, setDevise] = useState("")

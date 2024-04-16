@@ -1,15 +1,10 @@
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Navbar from "./components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
-
-const NavLinks = [
-  { id: 1, label: "Dashboard", href: "/", Icon: "" },
-  { id: 2, label: "Profile", href: "/profile", Icon: "" },
-  { id: 3, label: "Data", href: "/data", Icon: "" },
-  { id: 4, label: "Add data", href: "/register", Icon: "" },
-]
 
 export const metadata = {
   title: "Personnal Budget",
@@ -34,17 +29,8 @@ export default function RootLayout({ children }) {
                   <Link href={`/`} className="btn">Personnel Budget</Link>
                 </div>
                 <div className="flex-none hidden lg:block">
-                  <ul className="menu menu-horizontal">
-
-                    {
-                      NavLinks.map((n) => (
-                        <li key={n.id}>
-                          <Link href={n.href}>
-                            {n.label}
-                          </Link>
-                        </li>
-                      ))
-                    }
+                  <ul className="menu menu-horizontal gap-x-2">
+                    <Navbar/>
                   </ul>
                 </div>
               </div>
@@ -58,15 +44,7 @@ export default function RootLayout({ children }) {
           <div className="drawer-side">
             <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label>
             <ul className="menu p-4 w-80 min-h-full bg-base-200">
-              {
-                NavLinks.map((n) => (
-                  <li key={n.id}>
-                    <Link href={n.href}>
-                      {n.label}
-                    </Link>
-                  </li>
-                ))
-              }
+              <Navbar/>
             </ul>
           </div>
         </div>
