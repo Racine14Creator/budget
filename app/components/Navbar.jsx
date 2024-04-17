@@ -1,6 +1,5 @@
 "use client"
 
-import Link from "next/link"
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import {RegisterLink, LoginLink} from "@kinde-oss/kinde-auth-nextjs/components";
 import { usePathname } from "next/navigation"
