@@ -6,7 +6,6 @@ const NavLinks = [
   { id: 1, label: "Dashboard", href: "/home", Icon: "" },
   { id: 2, label: "Profile", href: "/profile", Icon: "" },
   { id: 3, label: "Data", href: "/data", Icon: "" },
-  { id: 4, label: "Add data", href: "/register", Icon: "" },
 ]
 export default function UserNav(){
     const pathname = usePathname();

@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 
 // const url = process.env.URL /*"http://localhost:3000"*/
 const url = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
-console.log(url)
+// console.log(url)
 const getData = async () => {
     
     try {
@@ -74,6 +74,7 @@ const Data = () => {
                 </div>
             ) : (
                 <>
+                    <div className="flex justify-between items-center">
                     <form action="#" method="post">
                         <select className="select select-bordered w-full max-w-xs mb-5">
                             <option disabled selected>Select Event?</option>
@@ -81,6 +82,8 @@ const Data = () => {
                             <option value={'Expense'}>Expense</option>
                         </select>
                     </form>
+                    <Link href={`/register`} className="button bg-error px-3 py-2 rounded-md">Add Data</Link>
+                    </div>
                     <table className="table table-zebra">
                         <thead>
                             <tr>
