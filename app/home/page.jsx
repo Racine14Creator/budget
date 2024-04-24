@@ -1,3 +1,6 @@
+
+import { Dashboard } from "../components/Dashboard/Dashboard"
+
 export default function HomePageAuth(){
-    return <h2>Home page</h2>
+    return <Dashboard/>
 }

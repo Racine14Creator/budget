@@ -1,6 +1,5 @@
 "use client"
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-import Image from 'next/image';
 
 export function Dashboard() {
     // Sample data for expenses and income
@@ -17,21 +16,18 @@ export function Dashboard() {
         <>
             <h3 className="text-3xl font-bold my-3">Recharts Dashboard</h3>
             <div className="flex justify-between items-start">
-
-                <div className="bg-white shadow-md my-3 rounded-lg p-5 text-black w-fif">
+                <div className="w-full shadow-md my-3 rounded-lg p-5 text-black w-fif">
                     <h3 className="text-3xl font-bold">Expense and Income Charts</h3>
                     <BarChart className='w-full' width={700} height={300} data={data} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" />
+                        {/* <CartesianGrid strokeDasharray="3 3" /> */}
                         <XAxis dataKey="month" />
                         <YAxis />
-                        <Tooltip contentStyle={{ borderRadius: "10px" }} />
+                        <Tooltip contentStyle={{ borderRadius: "10px", background: '#fff' }} />
                         <Legend />
                         <Bar dataKey="expenses" fill="#FF5733" name="Expenses" />
                         <Bar dataKey="income" fill="#47A8BD" name="Income" />
                     </BarChart>
                 </div>
-
-
             </div>
         </>
     );

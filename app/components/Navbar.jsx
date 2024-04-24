@@ -2,16 +2,14 @@
 
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import {RegisterLink, LoginLink} from "@kinde-oss/kinde-auth-nextjs/components";
-import { usePathname } from "next/navigation"
 import UserNav from "@/components/UserNav";
 
+export default function Navbar(){
 
-export default async function Navbar(){
-    const { isAuthenticated } = useKindeBrowserClient();
-    
-    const pathname = usePathname()
+  const { isAuthenticated } = useKindeBrowserClient();
+
     // console.log(pathname)
-    return isAuthenticated ? (
+  return isAuthenticated ? (
     <UserNav/>
   ) : (
     <>
