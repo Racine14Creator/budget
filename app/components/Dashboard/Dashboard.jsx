@@ -1,5 +1,6 @@
 "use client"
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 export function Dashboard() {
     // Sample data for expenses and income

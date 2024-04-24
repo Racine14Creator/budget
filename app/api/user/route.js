@@ -17,6 +17,7 @@ export async function GET(){
  * Post
  */
 export async function POST(req){
+    
     return NextResponse.json({message: "Psot req"})
 }
 /**
