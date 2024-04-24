@@ -6,7 +6,7 @@ import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
 
 const Profile = () => {
     const {user, isLoading} = useKindeBrowserClient();
-    console.log(user)
+    // console.log(user)
     let name = ''
     if(user){name = `${user.given_name + ' ' + user.family_name}`}
     if(isLoading) return <div className="h">Loading...</div>
