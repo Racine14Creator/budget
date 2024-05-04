@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import {HiOutlineTrash, HiPencilAlt } from "react-icons/hi"
 
 const url = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
 // console.log(url)
@@ -28,10 +29,10 @@ const getData = async () => {
 
 
 const Data = () => {
+    const router = useRouter()
     
     const [isLoading, setIsLoading] = useState(true);
     const [budgets, setBudgets] = useState([]);
-    const router = useRouter()
 
     const removeBudget = async function (id) {
 
@@ -42,7 +43,6 @@ const Data = () => {
             const res = await fetch(`${url}/api/budget/?id=${id}`, { method: "DELETE" })
 
             if (res.ok) {
-                router.push('/data')
                 router.refresh();
             }
         }
@@ -104,8 +104,8 @@ const Data = () => {
                                         <td>{b.description}</td>
                                         <td>
                                             <div className="join">
-                                                <Link href={`/data/${b._id}`} className="btn join-item btn-sm btn-primary">Edit</Link>
-                                                <button className="btn join-item btn-sm btn-error" onClick={() => removeBudget(b._id)}>Delete</button>
+                                                <Link href={`/data/${b._id}`} className="btn join-item btn-sm btn-primary"><HiPencilAlt/></Link>
+                                                <button className="btn join-item btn-sm btn-error" onClick={() => removeBudget(b._id)}><HiOutlineTrash /></button>
                                             </div>
                                         </td>
                                     </tr>

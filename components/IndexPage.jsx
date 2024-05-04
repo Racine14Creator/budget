@@ -14,13 +14,13 @@ export default function IndexPage(){
     return (
         <>
         <div className="h-[40vh] w-full flex flex-col justify-center items-center">
-            <h1 className="text-4xl lg:text-6xl font-bold text-primary mb-5">Welcome to MyBudget App</h1>
-            <p className="text-secondary text-lg lg:text-2xl px-5 text-center mb-5">
+            <h1 className="text-4xl lg:text-6xl font-bold text-primary mb-12">Welcome to MyBudget App</h1>
+            <p className="text-secondary text-lg lg:text-2xl px-5 text-center mb-12">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam, laudantium delectus ipsa accusamus impedit eligendi itaque illum tempore minima quae molestiae distinctio ab iure, excepturi quod quaerat a laboriosam. Accusantium.
             </p>
             <LogoutLink className="w-fit bg-error px-5 py-2 rounded-md text-lg lg:text-xl">Get Started</LogoutLink>
         </div>
-        <div className="relative">
+        <div className="relative my-[200px]">
             <span className="circle"></span>
             <div className="realtive w-full gap-10 bg-white p-10 rounded-2xl flex flex-col lg:flex-row justify-between items-center">
                 <div className="lg:w-1/2">
@@ -30,7 +30,7 @@ export default function IndexPage(){
                     </p>
                 </div>
                 <div className="relative bg-black rounded-xl p-4 lg:w-1/2">
-                    <Image placeholder="blur" width={550} height={320} src={'/assets/img/budgetbrand.png'} className="img" alt="Budget Tracker"/>
+                    <Image width={550} height={320} src={'/assets/img/budgetbrand.png'} className="img" alt="Budget Tracker"/>
                 </div>
             </div>
         </div>
