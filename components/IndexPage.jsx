@@ -30,7 +30,7 @@ export default function IndexPage(){
                     </p>
                 </div>
                 <div className="relative bg-black rounded-xl p-4 lg:w-1/2">
-                    <Image width={550} height={320} src={'/assets/img/budgetbrand.png'} className="img" alt="Budget Tracker"/>
+                    <Image placeholder="blur" width={550} height={320} src={'/assets/img/budgetbrand.png'} className="img" alt="Budget Tracker"/>
                 </div>
             </div>
         </div>
