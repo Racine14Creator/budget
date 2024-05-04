@@ -78,7 +78,7 @@ const Data = () => {
                             <option value={'Expense'}>Expense</option>
                         </select>
                     </form>
-                    <Link href={`/register`} className="button bg-error px-3 py-2 rounded-md">Add Data</Link>
+                    <Link href={`/data/register`} className="button bg-error px-3 py-2 rounded-md">Add Data</Link>
                     </div>
                     <table className="table table-zebra">
                         <thead>
@@ -104,7 +104,7 @@ const Data = () => {
                                         <td>{b.description}</td>
                                         <td>
                                             <div className="join">
-                                                <Link href={`/edit/${b._id}`} className="btn join-item btn-sm btn-primary">Edit</Link>
+                                                <Link href={`/data/${b._id}`} className="btn join-item btn-sm btn-primary">Edit</Link>
                                                 <button className="btn join-item btn-sm btn-error" onClick={() => removeBudget(b._id)}>Delete</button>
                                             </div>
                                         </td>

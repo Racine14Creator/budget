@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const EditForm = ({
     id,
@@ -50,7 +51,10 @@ const EditForm = ({
 
     return (
         <form onSubmit={handleSubmit} method="post">
-            <h3 className="text-3xl font-bold">Update</h3>
+            <div className="flex justify-between items-center">
+                <h3 className="text-3xl font-bold">Update</h3>
+                <Link href={'/data'} className="px-4 py-2 bg-error rounded-md text-white">Back</Link>
+            </div>
             <div className="group w-full my-1">
                 <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} name="amount" placeholder="Type here" className="input input-bordered my-2 input-md w-full" />
             </div>

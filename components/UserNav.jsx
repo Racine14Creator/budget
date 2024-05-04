@@ -9,12 +9,14 @@ const NavLinks = [
 ]
 export default function UserNav(){
     const pathname = usePathname();
+    const firstPathname = '/'+pathname.split('/')[1]
+
     return(
         <>
             {
                 NavLinks.map((n) => (
                     <li key={n.id}>
-                        <Link href={n.href} className={`${pathname === n.href ? 'bg-white text-black' : 'bg-transparent'}`}>
+                        <Link href={n.href} className={`${firstPathname === n.href ? 'bg-white text-black' : 'bg-transparent'}`}>
                         {n.label}
                         </Link>
                     </li>
