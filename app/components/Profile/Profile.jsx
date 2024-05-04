@@ -1,16 +1,20 @@
 "use client";
+
 import Image from 'next/image'
-import React from 'react'
 
 import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
+import { redirect } from 'next/navigation';
 
 const Profile = () => {
     const {user, isLoading} = useKindeBrowserClient();
     // console.log(user)
     let name = ''
     if(user){name = `${user.given_name + ' ' + user.family_name}`}
-    if(isLoading) return <div className="h">Loading...</div>
-
+    
+    if(isLoading) return <div className="absolute w-full h-screen bg-black text-white">Loading...</div>
+    
+    if(!user) {redirect('/')}
+    
     return (
         <>
             <h3 className="text-3xl font-bold my-3">Profile / {name}</h3>

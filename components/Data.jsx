@@ -4,15 +4,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-// const url = process.env.URL
-
-// const url = "https://budget-beta-ten.vercel.app"
-
-// const url = process.env.URL /*"http://localhost:3000"*/
 const url = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
 // console.log(url)
+
 const getData = async () => {
-    
+
     try {
 
         const res = await fetch(`${url}/api/budget`, { cache: 'no-store' });
@@ -32,7 +28,7 @@ const getData = async () => {
 
 
 const Data = () => {
-
+    
     const [isLoading, setIsLoading] = useState(true);
     const [budgets, setBudgets] = useState([]);
     const router = useRouter()

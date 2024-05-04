@@ -1,5 +1,8 @@
 "use client"
 
+import {useKindeBrowserClient} from "@kinde-oss/kinde-auth-nextjs";
+import { redirect } from "next/navigation";
+
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend } from 'recharts';
 
 export function Dashboard() {
@@ -12,8 +15,13 @@ export function Dashboard() {
         { month: 'May', expenses: 5500, income: 12500 },
         { month: 'June', expenses: 8000, income: 14000 },
     ];
+    const {isAuthenticated} = useKindeBrowserClient()
 
+    if(!isAuthenticated){
+        redirect('/')
+    }
     return (
+
         <>
             <h3 className="text-3xl font-bold my-3">Recharts Dashboard</h3>
             <div className="flex justify-between items-start">

@@ -4,6 +4,7 @@ import "./globals.css";
 import Link from "next/link";
 import Navbar from "./components/Navbar";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -19,7 +20,7 @@ export default function RootLayout({ children }) {
         <div className="drawer">
           <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col">
-            <div className="bg-base-300">
+            <div className="bg-base-300 sticky top-0">
               <div className="max-w-[1000px] mx-auto navbar">
                 <div className="flex-none lg:hidden">
                   <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
@@ -27,7 +28,7 @@ export default function RootLayout({ children }) {
                   </label>
                 </div>
                 <div className="flex-1 px-2 mx-2">
-                  <Link href={`/`} className="btn">Personnal Budget</Link>
+                  <Link href={'/'} className="btn">Personnal Budget</Link>
                 </div>
                 <div className="flex-none hidden lg:block">
                   <ul className="menu menu-horizontal gap-x-2">
@@ -49,7 +50,6 @@ export default function RootLayout({ children }) {
             </ul>
           </div>
         </div>
-
       </body>
     </html>
   );

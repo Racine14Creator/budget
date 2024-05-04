@@ -3,10 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-// const url = "https://budget-beta-ten.vercel.app"
-// const url = "http://localhost:3000"
-
-
 const EditForm = ({
     id,
     amount: initialAmount,
@@ -20,8 +16,8 @@ const EditForm = ({
     const url = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
     
     const handleSubmit = async (e) => {
+        
         e.preventDefault()
-
 
         try {
             const res = await fetch(`${url}/api/budget/${id}`, {
