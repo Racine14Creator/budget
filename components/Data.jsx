@@ -92,7 +92,7 @@ const Data = () => {
                         </select>
 
                     </form>
-                    <BackToData label="register" icon={<HiPlus/>} path="/data/register"/>
+                    <BackToData label="Add data" icon={<HiPlus/>} path="/data/register"/>
                     </div>
                     {!budgets.length ?
                         <div className="text-error bg-red-300 py-12 border-spacing-1 rounded-3xl flex justify-center items-center text-wrap">
