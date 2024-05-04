@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
+import BackToData from "./BackToData";
+import { HiArrowLeft } from "react-icons/hi";
 
 const EditForm = ({
     id,
@@ -53,7 +54,7 @@ const EditForm = ({
         <form onSubmit={handleSubmit} method="post">
             <div className="flex justify-between items-center">
                 <h3 className="text-3xl font-bold">Update</h3>
-                <Link href={'/data'} className="px-4 py-2 bg-error rounded-md text-white">Back</Link>
+                <BackToData label="Back" icon={<HiArrowLeft/>} path="/data"/>
             </div>
             <div className="group w-full my-1">
                 <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} name="amount" placeholder="Type here" className="input input-bordered my-2 input-md w-full" />

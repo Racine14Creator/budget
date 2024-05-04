@@ -52,7 +52,7 @@ const EditOne = ({ params }) => {
                     desc={budget.description}
                 />
             )}
-            {!budget && <span className="max-w-md loading loading-bars loading-lg mx-auto"></span>}
+            {!budget && <div className='w-full flex justify-center items-center p-5'><span className="max-w-md loading loading-bars loading-lg mx-auto"></span></div>}
         </>
     );
 };

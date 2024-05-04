@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import {HiOutlineTrash, HiPencilAlt } from "react-icons/hi"
+import {HiOutlineTrash, HiPencilAlt, HiPlus } from "react-icons/hi"
+import BackToData from "./BackToData";
 
 const url = process.env.NEXT_PUBLIC_URL || 'http://localhost:3000'
 // console.log(url)
@@ -21,7 +22,9 @@ const getData = async () => {
         return res.json();
 
     } catch (error) {
+
         console.error(error);
+        
         throw new Error(error);
     }
 };
@@ -33,6 +36,7 @@ const Data = () => {
     
     const [isLoading, setIsLoading] = useState(true);
     const [budgets, setBudgets] = useState([]);
+    const [isFetchingData, setIsFetchingData] = useState(false);
 
     const removeBudget = async function (id) {
 
@@ -43,24 +47,33 @@ const Data = () => {
             const res = await fetch(`${url}/api/budget/?id=${id}`, { method: "DELETE" })
 
             if (res.ok) {
-                router.refresh();
+                fetchData();
             }
         }
     }
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const { budgets } = await getData();
-                setBudgets(budgets);
-                setIsLoading(false);
-            } catch (error) {
-                console.error(error);
-            }
-        };
+    const fetchData = async () => {
+        try {
+            setIsFetchingData(true);
+            const { budgets } = await getData();
+            setBudgets(budgets);
+            setIsLoading(false);
+        } catch (error) {
+            console.error(error);
+        } finally {
+            setIsFetchingData(false);
+        }
+    };
 
+    useEffect(() => {
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (!isFetchingData) {
+            fetchData();
+        }
+    }, [isFetchingData]);
 
     return (
         <div className="overflow-x-auto">
@@ -72,14 +85,20 @@ const Data = () => {
                 <>
                     <div className="flex justify-between items-center">
                     <form action="#" method="post">
-                        <select className="select select-bordered w-full max-w-xs mb-5">
-                            <option disabled selected>Select Event?</option>
+                        <select className="select select-bordered w-full max-w-xs mb-5" onChange={(e) => console.log(e.target.value)}>
+                            <option value="" defaultValue>Select Event?</option>
                             <option value={'Income'}>Income</option>
                             <option value={'Expense'}>Expense</option>
                         </select>
+
                     </form>
-                    <Link href={`/data/register`} className="button bg-error px-3 py-2 rounded-md">Add Data</Link>
+                    <BackToData label="register" icon={<HiPlus/>} path="/data/register"/>
                     </div>
+                    {!budgets.length ?
+                        <div className="text-error bg-red-300 py-12 border-spacing-1 rounded-3xl flex justify-center items-center text-wrap">
+                            <h3 className="text-2xl font-bold">No data found! :{"("}</h3>
+                        </div>
+                        :
                     <table className="table table-zebra">
                         <thead>
                             <tr>
@@ -112,6 +131,7 @@ const Data = () => {
                                 ))}
                         </tbody>
                     </table>
+                    }
                 </>
             )}
         </div>
