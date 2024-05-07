@@ -11,7 +11,7 @@ const Profile = () => {
     let name = ''
     if(user){name = `${user.given_name + ' ' + user.family_name}`}
     
-    if(isLoading) return <div className="absolute w-full h-screen bg-black text-white">Loading...</div>
+    if(isLoading) return <div className="absolute top-0 left-0 w-full h-screen flex justify-center items-center bg-black text-white">Loading...</div>
     
     if(!user) {redirect('/')}
     
