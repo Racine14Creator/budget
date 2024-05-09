@@ -3,6 +3,7 @@
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 export default function IndexPage(){
 
     const {isAuthenticated} = useKindeBrowserClient()
