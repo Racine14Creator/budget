@@ -1,4 +1,3 @@
-
 import Profile from '../components/Profile/Profile'
 
 const page = () => {

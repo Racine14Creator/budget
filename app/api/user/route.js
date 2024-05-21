@@ -17,6 +17,9 @@ export async function GET() {
  */
 export async function POST(req) {
   return NextResponse.json({ message: "Post req" });
+export async function POST(req){
+    
+    return NextResponse.json({message: "Psot req"})
 }
 /**
  * DELETE
