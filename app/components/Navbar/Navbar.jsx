@@ -8,12 +8,14 @@ import {
   MenuItem,
   MenuItems,
 } from "@headlessui/react";
+
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
   LoginLink,
   RegisterLink,
   useKindeBrowserClient,
 } from "@kinde-oss/kinde-auth-nextjs";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -23,9 +25,11 @@ const user = {
   imageUrl:
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
+
 const navigation = [
   { name: "Dashboard", href: "/dashboard", current: true, requireAuth: true },
   { name: "Transactions", href: "/dashboard/transactions", current: false },
+  { name: "Garderie", href: "/dashboard/data", current: false },
   { name: "Reports", href: "/dashboard/reports", current: false },
 ];
 const userNavigation = [
@@ -50,9 +54,11 @@ export default function Navbar() {
         <div className='flex h-16 items-center justify-between'>
           <div className='flex items-center'>
             <div className='flex-shrink-0'>
-              <img
+              <Image
+                width={200}
+                height={200}
                 alt='Racine14 Creator'
-                src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
+                src='/assets/logo.png'
                 className='h-8 w-8'
               />
             </div>

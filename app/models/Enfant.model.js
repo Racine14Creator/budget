@@ -1,21 +1,21 @@
 import mongoose, { Schema } from "mongoose";
 
-const budgetSchema = new Schema(
+const EnfantSchema = new Schema(
   {
-    amount: {
+    Name: {
       type: Number,
       required: true,
       min: 0,
     },
-    event: {
+    Fahter: {
       type: String,
       required: true,
     },
-    devise: {
+    Mother: {
       type: String,
       required: true,
     },
-    date: {
+    Phone: {
       type: String,
       required: true,
     },
@@ -23,7 +23,7 @@ const budgetSchema = new Schema(
       type: String,
       required: true,
     },
-    description: {
+    Nounou: {
       type: String,
       required: true,
     },
@@ -31,5 +31,5 @@ const budgetSchema = new Schema(
   { timestamps: true }
 );
 
-const Budget = mongoose.models.Budget || mongoose.model("Budget", budgetSchema);
-export default Budget;
+const Enfant = mongoose.models.Enfant || mongoose.model("Enfant", EnfantSchema);
+export default Enfant;
