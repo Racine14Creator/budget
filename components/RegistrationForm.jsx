@@ -11,25 +11,29 @@ export function RegistrationForm() {
 
   const router = useRouter();
 
-  const [amount, setAmount] = useState("");
-  const [transEvent, setTransEvent] = useState("");
-  const [devise, setDevise] = useState("");
+  const [name, setName] = useState("");
+  const [father, setFather] = useState("");
+  const [mother, setMother] = useState("");
+  const [phone, setPhone] = useState("");
+  const [nounou, setNounou] = useState("");
   const [country, setCountry] = useState("");
-  const [desc, setDesc] = useState("");
-  const [date, setDate] = useState("");
+
   const [errors, setErrors] = useState({});
 
   const handleSubmit = async (ev) => {
     ev.preventDefault();
 
-    if (!amount || !transEvent || !devise || !country || !desc) {
+    if (!name || !father || !mother || !country || !phone) {
       const newErrors = {};
-      if (!amount) newErrors.amount = "Nom de l'enfant est obligatoire";
-      if (!transEvent) newErrors.transEvent = "Nom du pere est obligatoire";
-      if (!devise) newErrors.devise = "Nom de la mere.";
+      if (!name) newErrors.name = "Nom de l'enfant est obligatoire";
+
+      if (!father) newErrors.father = "Nom du pere est obligatoire";
+
+      if (!mother) newErrors.mother = "Nom de la mere.";
+
       if (!country) newErrors.country = "Nationalite est obligatoire.";
 
-      if (!desc) newErrors.desc = "Nom de la nounou.";
+      if (!phone) newErrors.phone = "Numero de telephone.";
       setErrors(newErrors);
 
       // Clear errors after 1000ms
@@ -39,20 +43,23 @@ export function RegistrationForm() {
     }
 
     try {
-      const res = await fetch(`${url}/api/budget`, {
+      const enfantUrl = `${url}/api/enfant`;
+      // console.log(enfantUrl);
+
+      const res = await fetch(enfantUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount,
-          transEvent,
-          devise,
-          date,
+          name,
+          father,
+          mother,
+          phone,
           country,
-          desc,
+          nounou,
         }),
       });
       if (res.ok) {
-        router.push("/data");
+        router.push("/dashboard/data");
         router.refresh();
       } else {
         throw new Error("Failed to create this.");
@@ -67,49 +74,37 @@ export function RegistrationForm() {
         <div className='group w-full my-1'>
           <input
             type='text'
-            name='amount'
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            name='name'
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             placeholder="Nom de l'enfant"
-            className='input input-bordered my-2 input-md w-full'
+            className='input input-bordered text-white my-2 input-md w-full'
           />
-          {errors.amount && <p className='text-red-500'>{errors.amount}</p>}
+          {errors.name && <p className='text-red-500'>{errors.name}</p>}
         </div>
 
         <div className='group w-full my-1'>
-          <select
-            defaultValue={""}
-            className='select select-bordered w-full'
-            value={transEvent}
-            onChange={(e) => setTransEvent(e.target.value)}
-          >
-            <option value={""} disabled>
-              Events ?
-            </option>
-            <option value={"Income"}>Income</option>
-            <option value={"Expense"}>Expense</option>
-          </select>
-          {errors.transEvent && (
-            <p className='text-red-500'>{errors.transEvent}</p>
-          )}
+          <input
+            type='text'
+            name='father'
+            value={father}
+            onChange={(e) => setFather(e.target.value)}
+            placeholder='Le nom du pere'
+            className='input input-bordered text-white my-2 input-md w-full'
+          />
+          {errors.father && <p className='text-red-500'>{errors.father}</p>}
         </div>
 
         <div className='group w-full my-1 mt-3'>
-          <select
-            className='select select-bordered w-full'
-            defaultValue={""}
-            value={devise}
-            onChange={(e) => setDevise(e.target.value)}
-          >
-            <option value={""} disabled>
-              Devise ?
-            </option>
-            <option value={"RWF"}>RWF</option>
-            <option value={"CDF"}>CDF</option>
-            <option value={"$"}>$</option>
-            <option value={"BITCOIN"}>BITCOIN</option>
-          </select>
-          {errors.devise && <p className='text-red-500'>{errors.devise}</p>}
+          <input
+            type='text'
+            name='mother'
+            value={mother}
+            onChange={(e) => setMother(e.target.value)}
+            placeholder='Le nom de la mere'
+            className='input input-bordered text-white my-2 input-md w-full'
+          />
+          {errors.mother && <p className='text-red-500'>{errors.mother}</p>}
         </div>
 
         <div className='group w-full my-1'>
@@ -119,35 +114,37 @@ export function RegistrationForm() {
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             placeholder='Country'
-            className='input input-bordered my-2 input-md w-full'
-          />
-          {errors.country && <p className='text-red-500'>{errors.country}</p>}
-        </div>
-        <div className='group w-full my-1'>
-          <input
-            type='date'
-            name='date'
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            placeholder='Date'
-            className='input input-bordered my-2 input-md w-full'
+            className='input input-bordered text-white my-2 input-md w-full'
           />
           {errors.country && <p className='text-red-500'>{errors.country}</p>}
         </div>
 
         <div className='group w-full my-1'>
-          <textarea
-            className='textarea textarea-bordered my-2 w-full'
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-            placeholder='Description or Motif'
-          ></textarea>
-          {errors.desc && <p className='text-red-500'>{errors.desc}</p>}
+          <input
+            type='tel'
+            name='phone'
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder='Numero de telephone'
+            className='input input-bordered text-white my-2 input-md w-full'
+          />
+          {errors.phone && <p className='text-red-500'>{errors.phone}</p>}
+        </div>
+        <div className='group w-full my-1'>
+          <input
+            type='text'
+            name='nounou'
+            value={nounou}
+            onChange={(e) => setNounou(e.target.value)}
+            placeholder='Le nom de la nounou'
+            className='input input-bordered text-white my-2 input-md w-full'
+          />
+          {errors.nounou && <p className='text-red-500'>{errors.nounou}</p>}
         </div>
 
         <div className='group my-1'>
           <button className='btn btn-primary btn-md' type='submit'>
-            Save
+            Enregistrer
           </button>
         </div>
       </form>

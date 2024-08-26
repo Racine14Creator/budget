@@ -8,7 +8,7 @@ const Register = () => {
       <div className='flex justify-between my-4 items-center'>
         <h3 className='text-3xl font-bold'>Enregistrer un nouveau</h3>
         <BackToData
-          label='Back'
+          label='Retour'
           icon={<HiArrowLeft />}
           path='/dashboard/data'
         />

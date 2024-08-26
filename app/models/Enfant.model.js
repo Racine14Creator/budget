@@ -3,11 +3,10 @@ import mongoose, { Schema } from "mongoose";
 const EnfantSchema = new Schema(
   {
     Name: {
-      type: Number,
+      type: String,
       required: true,
-      min: 0,
     },
-    Fahter: {
+    Father: {
       type: String,
       required: true,
     },
@@ -17,7 +16,6 @@ const EnfantSchema = new Schema(
     },
     Phone: {
       type: String,
-      required: true,
     },
     country: {
       type: String,
@@ -25,7 +23,6 @@ const EnfantSchema = new Schema(
     },
     Nounou: {
       type: String,
-      required: true,
     },
   },
   { timestamps: true }
