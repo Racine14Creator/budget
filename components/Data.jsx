@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { HiOutlineTrash, HiPencilAlt, HiPlus } from "react-icons/hi";
 import BackToData from "./BackToData";
 
@@ -26,8 +25,6 @@ const getData = async () => {
 };
 
 const Data = () => {
-  const router = useRouter();
-
   const [isLoading, setIsLoading] = useState(true);
   const [budgets, setBudgets] = useState([]);
   const [isFetchingData, setIsFetchingData] = useState(false);
@@ -50,6 +47,7 @@ const Data = () => {
     try {
       setIsFetchingData(true);
       const { budgets } = await getData();
+
       setBudgets(budgets);
       setIsLoading(false);
     } catch (error) {
@@ -80,7 +78,7 @@ const Data = () => {
           <div className='flex max-w-[1024px] mx-auto justify-between items-center'>
             <Link
               href='/dashboard/data/register'
-              className='bg-red-500 px-5 py-2 rounded-full'
+              className='bg-red-500 text-white px-5 py-2 rounded-full'
             >
               Enregistrer un nouveau
             </Link>
@@ -134,7 +132,7 @@ const Data = () => {
                       <td>
                         <div className='join'>
                           <Link
-                            href={`/data/${b._id}`}
+                            href={`/dashboard/data/${b._id}`}
                             className='btn  join-item btn-sm btn-primary'
                           >
                             <HiPencilAlt />
