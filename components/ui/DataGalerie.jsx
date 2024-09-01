@@ -8,9 +8,12 @@ import BackToData from "../BackToData";
 
 const url = process.env.NEXT_PUBLIC_URL;
 
+console.log("API:" + url);
 const getData = async () => {
   try {
-    const res = await fetch(`${url}/api/garderie`, { cache: "no-store" });
+    const res = await fetch(`https://budget-beta-ten.vercel.app/api/garderie`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       throw new Error("Failed to fetch Data...");
