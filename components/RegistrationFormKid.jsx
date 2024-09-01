@@ -50,7 +50,7 @@ export default function RegistrationKid() {
         body: JSON.stringify(formData), // Corrected the body to pass the entire formData object
       });
 
-      console.log(formData);
+      // console.log(formData);
 
       if (res.ok) {
         router.push("/dashboard/garderie");
@@ -73,7 +73,6 @@ export default function RegistrationKid() {
           </h2>
           <p className='mt-1 text-sm leading-6 text-gray-600'>
             Tous les champs doivent être remplis.
-            {JSON.stringify(formData)}
           </p>
 
           <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
