@@ -1,7 +1,7 @@
 "use server";
 
 import DBconnection from "@/app/libs/mongodb.config";
-import Garderie from "@/app/models/garderie.model";
+import Garderie from "@/app/models/Garderie";
 import { NextResponse } from "next/server";
 
 export async function GET(req) {
