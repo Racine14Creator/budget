@@ -29,6 +29,7 @@ const user = {
 const navigation = [
   { name: "Dashboard", href: "/dashboard", current: true, requireAuth: true },
   { name: "Transactions", href: "/dashboard/transactions", current: false },
+  { name: "Payement", href: "/dashboard/garderie", current: false },
   { name: "Garderie", href: "/dashboard/data", current: false },
   { name: "Reports", href: "/dashboard/reports", current: false },
 ];

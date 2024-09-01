@@ -21,7 +21,6 @@ const EnfantSchema = new Schema(
     },
     country: {
       type: String,
-      required: true,
     },
     Nounou: {
       type: String,
