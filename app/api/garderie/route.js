@@ -5,46 +5,28 @@ import Garderie from "@/app/models/Garderie";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  try {
-    const { Name, Father, Mother, Phone, country, Nounou, address } =
-      await req.json();
+  const { Name, Father, Mother, Phone, country, Nounou, address } =
+    await req.json();
 
-    if (
-      !Name ||
-      !Father ||
-      !Mother ||
-      !Phone ||
-      !country ||
-      !Nounou ||
-      !address
-    ) {
-      return NextResponse.json(
-        { message: "All fields are required" },
-        { status: 400 }
-      );
-    }
+  await DBconnection();
 
-    await DBconnection();
+  const res = await Garderie.create({
+    Name,
+    Father,
+    Mother,
+    Phone,
+    country,
+    Nounou,
+    address,
+  });
 
-    await Garderie.create({
-      Name,
-      Father,
-      Mother,
-      Phone,
-      country,
-      Nounou,
-      address,
-    });
-
+  if (res) {
     return NextResponse.json(
       { message: "Garderie entry inserted" },
       { status: 201 }
     );
-  } catch (error) {
-    return NextResponse.json(
-      { message: "Something went wrong...", error: error.message },
-      { status: 500 }
-    );
+  } else {
+    return NextResponse.json({ message: "DB error" });
   }
 }
 

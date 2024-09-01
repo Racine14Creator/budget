@@ -8,7 +8,6 @@ import BackToData from "../BackToData";
 
 const url = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
 
-console.log("API:" + url);
 const getData = async () => {
   try {
     const res = await fetch(`${url}/api/garderie`, {
@@ -27,7 +26,7 @@ const getData = async () => {
 };
 
 export default function DataGalerie() {
-  const [gaderies, setGaderies] = useState([]);
+  const [enfants, setEnfants] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isFetchingData, setIsFetchingData] = useState(false);
 
@@ -53,7 +52,7 @@ export default function DataGalerie() {
       const { gaderies } = await getData();
       console.log("Data Fetching:... " + gaderies);
 
-      setGaderies(gaderies);
+      setEnfants(gaderies);
       setIsLoading(false);
     } catch (error) {
       toast.error(error);
@@ -77,6 +76,7 @@ export default function DataGalerie() {
     <div>
       {isLoading ? (
         <div className='flex w-full justify-center items-center p-20 mx-auto'>
+          {/* {JSON.stringify(enfants)} */}
           <span className='loading loading-infinity loading-lg'></span>
         </div>
       ) : (
@@ -95,7 +95,7 @@ export default function DataGalerie() {
             />
           </div>
 
-          {!gaderies.length ? ( // Fixed the condition to properly handle no data case
+          {!enfants.length ? ( // Fixed the condition to properly handle no data case
             <div className='text-error bg-red-300 py-12 border-spacing-1 rounded-3xl flex justify-center items-center text-wrap'>
               <h3 className='text-2xl font-bold'>
                 Vous n&apos;avez d&apos;enfant enregistrer...
@@ -115,7 +115,7 @@ export default function DataGalerie() {
                     </tr>
                   </thead>
                   <tbody>
-                    {gaderies.map(({ _id, Name, Father, Mother, Phone }) => (
+                    {enfants.map(({ _id, Name, Father, Mother, Phone }) => (
                       <tr key={_id} className='rounded-full'>
                         <td>{Name}</td>
                         <td>{Father}</td>

@@ -1,18 +1,22 @@
 "use client";
-import { createEnfant } from "@/actions/createKid";
 import { useState } from "react";
+import { useRouter } from "next/navigation"; // Added this import
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const url = process.env.NEXT_PUBLIC_URL;
+
 export default function RegistrationKid() {
+  const router = useRouter(); // Fixed this to use `useRouter` correctly
   const [formData, setFormData] = useState({
     Name: "",
     Mother: "",
     Father: "",
     country: "",
-    streetAddress: "",
-    nounou: "",
-    phone: "",
+    address: "",
+    Nounou: "",
+    Phone: "",
+    Name: "",
   });
 
   const handleChange = (e) => {
@@ -30,25 +34,33 @@ export default function RegistrationKid() {
       !formData.Name ||
       !formData.Mother ||
       !formData.Father ||
-      !formData.phone
+      !formData.Phone
     ) {
       toast.error("Tous les champs doivent être remplis!");
       return;
     }
-
-    const res = await createEnfant(formData);
-    // If all required fields are filled
-    if (res) {
-      setFormData({
-        Name: "",
-        Mother: "",
-        Father: "",
-        country: "",
-        streetAddress: "",
-        nounou: "",
-        phone: "",
+    // console.log("Data: " + formData);
+    // const { Name, Father, Mother, Phone, Nounou, address, country } = formData;
+    // console.log(Name, Father, Mother, Phone, Nounou, address, country);
+    try {
+      const res = await fetch(`${url}/api/garderie`, {
+        // Removed `url` and used relative path
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData), // Corrected the body to pass the entire formData object
       });
-      toast.success("Enregistrement réussi!");
+
+      console.log(formData);
+
+      if (res.ok) {
+        router.push("/dashboard/garderie");
+        router.refresh();
+      } else {
+        throw new Error("Failed to create Kid");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Une erreur s'est produite lors de l'enregistrement."); // Added error handling feedback
     }
   };
 
@@ -57,10 +69,11 @@ export default function RegistrationKid() {
       <div className='space-y-12'>
         <div className='border-b border-gray-900/10 pb-12'>
           <h2 className='text-base font-semibold leading-7 text-gray-900'>
-            Les information sur le bébé
+            Les informations sur le bébé
           </h2>
           <p className='mt-1 text-sm leading-6 text-gray-600'>
             Tous les champs doivent être remplis.
+            {JSON.stringify(formData)}
           </p>
 
           <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
@@ -159,9 +172,9 @@ export default function RegistrationKid() {
               <div className='mt-2'>
                 <input
                   id='streetAddress'
-                  name='streetAddress'
+                  name='address'
                   type='text'
-                  value={formData.streetAddress}
+                  value={formData.address}
                   onChange={handleChange}
                   placeholder='Adresse'
                   className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -178,9 +191,9 @@ export default function RegistrationKid() {
               <div className='mt-2'>
                 <input
                   id='nounou'
-                  name='nounou'
+                  name='Nounou'
                   type='text'
-                  value={formData.nounou}
+                  value={formData.Nounou}
                   onChange={handleChange}
                   placeholder='Nounou'
                   className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
@@ -197,9 +210,9 @@ export default function RegistrationKid() {
               <div className='mt-2'>
                 <input
                   id='phone'
-                  name='phone'
+                  name='Phone'
                   type='tel'
-                  value={formData.phone}
+                  value={formData.Phone}
                   onChange={handleChange}
                   placeholder='Téléphone'
                   className='block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6'
