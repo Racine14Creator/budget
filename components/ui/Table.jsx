@@ -18,7 +18,7 @@ export default async function Table({ item }) {
       >
         {item.Mother}
         <Link
-          href={`/dashboard/gaderie/${item._id}`}
+          href={`/dashboard/garderie/${item._id}`}
           className='bg-blue-500 text-white rounded-xl px-5 py-2'
         >
           <Eye className='w-5 h-5' />
