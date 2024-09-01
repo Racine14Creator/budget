@@ -95,7 +95,7 @@ export default function DataGalerie() {
           {!gaderies.length ? ( // Fixed the condition to properly handle no data case
             <div className='text-error bg-red-300 py-12 border-spacing-1 rounded-3xl flex justify-center items-center text-wrap'>
               <h3 className='text-2xl font-bold'>
-                Vous n&apos;avez d'enfant enregistrer...
+                Vous n&apos;avez d&apos;enfant enregistrer...
               </h3>
             </div>
           ) : (
