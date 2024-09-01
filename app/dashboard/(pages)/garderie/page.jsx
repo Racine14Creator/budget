@@ -1,7 +1,8 @@
 import RegistrationKid from "@/components/RegistrationFormKid";
+import DataGalerie from "@/components/ui/DataGalerie";
 import React from "react";
 
-export default function PaymentPage() {
+export default async function PaymentPage() {
   return (
     <>
       <div className='w-full flex flex-col md:flex-col md:justify-between items-start md:max-w-[1200px] py-5 mx-auto'>
@@ -22,6 +23,7 @@ export default function PaymentPage() {
         </div>
         <div className='flex flex-col gap-y-5 p-5 w-full rounded-lg border'>
           <h3>Data</h3>
+          <DataGalerie />
         </div>
       </div>
     </>

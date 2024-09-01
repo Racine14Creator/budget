@@ -4,12 +4,12 @@ const EnfantSchema = new Schema(
   {
     Name: {
       type: Number,
-      required: true,
-      min: 0,
+      // required: true,
+      // min: 3,
     },
     Fahter: {
       type: String,
-      required: true,
+      // required: true,
     },
     Mother: {
       type: String,
@@ -17,15 +17,16 @@ const EnfantSchema = new Schema(
     },
     Phone: {
       type: String,
-      required: true,
+      // required: true,
     },
     country: {
       type: String,
     },
     Nounou: {
       type: String,
-      required: true,
+      // required: true,
     },
+    address: { type: String },
   },
   { timestamps: true }
 );

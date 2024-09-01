@@ -1,6 +1,7 @@
 "use client";
+import { createEnfant } from "@/actions/createKid";
 import { useState } from "react";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function RegistrationKid() {
@@ -21,7 +22,7 @@ export default function RegistrationKid() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Form validation
@@ -35,13 +36,24 @@ export default function RegistrationKid() {
       return;
     }
 
+    const res = await createEnfant(formData);
     // If all required fields are filled
-    toast.success("Enregistrement réussi!");
+    if (res) {
+      setFormData({
+        Name: "",
+        Mother: "",
+        Father: "",
+        country: "",
+        streetAddress: "",
+        nounou: "",
+        phone: "",
+      });
+      toast.success("Enregistrement réussi!");
+    }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <ToastContainer />
       <div className='space-y-12'>
         <div className='border-b border-gray-900/10 pb-12'>
           <h2 className='text-base font-semibold leading-7 text-gray-900'>
