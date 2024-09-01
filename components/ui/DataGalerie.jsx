@@ -6,12 +6,12 @@ import { HiOutlineTrash, HiPencilAlt, HiPlus } from "react-icons/hi";
 import { toast } from "react-toastify";
 import BackToData from "../BackToData";
 
-const url = process.env.NEXT_PUBLIC_URL;
+const url = process.env.NEXT_PUBLIC_URL || "http://localhost:3000";
 
 console.log("API:" + url);
 const getData = async () => {
   try {
-    const res = await fetch(`https://budget-beta-ten.vercel.app/api/garderie`, {
+    const res = await fetch(`${url}/api/garderie`, {
       cache: "no-store",
     });
 
