@@ -12,6 +12,13 @@ export default function EditKidForm({
   country,
   Nounou,
 }) {
+  const [newName, setNewName] = useState(Name);
+  const [newFather, setNewFather] = useState(Father);
+  const [newMother, setNewMother] = useState(Mother);
+  const [newPhone, setNewPhone] = useState(Phone);
+  const [newCountry, setNewCountry] = useState(country);
+  const [newNounou, setNewNounou] = useState(Nounou);
+
   return (
     <form onSubmit={handleSubmit}>
       <div className='space-y-12'>

@@ -25,7 +25,7 @@ export default function Home() {
         <header className='bg-white shadow'>
           <div className='mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8'>
             <h1 className='text-3xl font-bold tracking-tight text-gray-900'>
-              Dashboard
+              Tableau de bord
             </h1>
           </div>
         </header>
@@ -34,7 +34,7 @@ export default function Home() {
             <div className='flex flex-col md:flex-row md:gap-10 justify-between items-start'>
               <div className='relative overflow-hidden w-full md:w-fit border shadow-md my-3 rounded-lg p-5 text-black'>
                 <h3 className='text-3xl sm:text-2xl font-bold text-white'>
-                  Chart
+                  Les donnnees de toute une annee
                 </h3>
                 <BarChart
                   className='w-full mx-auto md:w-fit'

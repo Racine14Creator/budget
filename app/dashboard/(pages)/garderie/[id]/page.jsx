@@ -18,14 +18,14 @@ const getGarderieId = async function (id) {
 
 export default async function EditPage({ params }) {
   const { id } = params;
+
   const enfant = await getGarderieId(id);
 
-  const { _id, Name, Father, Mother, Phone, country, Nounou } = enfant.enfant;
+  console.log(enfant);
 
   return (
     <div className='bg-white p-5 my-3'>
-      <EditKidForm
-        id={_id}
+      {/* <EditKidForm
         Name={Name}
         Father={Father}
         Mother={Mother}
@@ -33,7 +33,7 @@ export default async function EditPage({ params }) {
         Phone={Phone}
         country={country}
         address={address}
-      />
+      /> */}
     </div>
   );
 }
