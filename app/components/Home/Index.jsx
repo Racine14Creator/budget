@@ -1,52 +1,52 @@
 import {
-  ArrowPathIcon,
-  CloudArrowUpIcon,
-  FingerPrintIcon,
-  LockClosedIcon,
+  AcademicCapIcon,
+  BookOpenIcon,
+  LightBulbIcon,
+  UsersIcon,
 } from "@heroicons/react/24/outline";
 
 const features = [
   {
-    name: "EveryWhere",
+    name: "Éducation de Qualité",
     description:
-      "Morbi viverra dui mi arcu sed. Tellus semper adipiscing suspendisse semper morbi. Odio urna massa nunc massa.",
-    icon: CloudArrowUpIcon,
+      "Nous offrons un environnement favorable qui encourage l'apprentissage par le jeu et l'exploration, permettant à chaque enfant d'atteindre son plein potentiel.",
+    icon: AcademicCapIcon,
   },
   {
-    name: "Authentification",
+    name: "Enseignants Compétents",
     description:
-      "Sit quis amet rutrum tellus ullamcorper ultricies libero dolor eget. Sem sodales gravida quam turpis enim lacus amet.",
-    icon: LockClosedIcon,
+      "Notre équipe d'éducateurs dévoués et passionnés est hautement qualifiée pour offrir une attention personnalisée, assurant la croissance et le développement de chaque enfant.",
+    icon: UsersIcon,
   },
   {
-    name: "Simple queues",
+    name: "Apprentissage Créatif",
     description:
-      "Quisque est vel vulputate cursus. Risus proin diam nunc commodo. Lobortis auctor congue commodo diam neque.",
-    icon: ArrowPathIcon,
+      "Nous mettons l'accent sur la créativité et l'innovation dans notre programme, en inspirant les enfants à réfléchir de manière critique et à explorer leurs intérêts à travers diverses activités.",
+    icon: LightBulbIcon,
   },
   {
-    name: "Advanced security",
+    name: "Ressources Complètes",
     description:
-      "Arcu egestas dolor vel iaculis in ipsum mauris. Tincidunt mattis aliquet hac quis. Id hac maecenas ac donec pharetra eget.",
-    icon: FingerPrintIcon,
+      "Notre école est équipée de ressources à la pointe de la technologie et d'une vaste bibliothèque, offrant aux enfants les outils nécessaires pour réussir dans leur parcours éducatif.",
+    icon: BookOpenIcon,
   },
 ];
 
-export default function IndexPageHome() {
+export default function AboutSchool() {
   return (
     <div className='bg-white py-24 sm:py-32'>
       <div className='mx-auto max-w-7xl px-6 lg:px-8'>
         <div className='mx-auto max-w-2xl lg:text-center'>
           <h2 className='text-base font-semibold leading-7 text-indigo-600'>
-            Budget Tracking
+            Bienvenue à Notre École
           </h2>
           <p className='mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl'>
-            Be Updated about you money everyday and everywhere.
+            Former les Leaders de Demain
           </p>
           <p className='mt-6 text-lg leading-8 text-gray-600'>
-            Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-            Suspendisse eget egestas a elementum pulvinar et feugiat blandit at.
-            In mi viverra elit nunc.
+            Notre école offre un programme équilibré qui combine les académies,
+            la créativité et le développement émotionnel, préparant les enfants
+            à un avenir brillant.
           </p>
         </div>
         <div className='mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-4xl'>
