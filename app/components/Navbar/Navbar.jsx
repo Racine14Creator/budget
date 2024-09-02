@@ -138,7 +138,8 @@ export default function Navbar() {
               )}
             </div>
           </div>
-          <div className='-mr-2 flex md:hidden'>
+          <LogoutLink className='block md:hidden '>Se connecter</LogoutLink>
+          {/* <div className='-mr-2 flex md:hidden'>
             <DisclosureButton className='group relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
               <span className='absolute -inset-0.5' />
               <span className='sr-only'>Open main menu</span>
@@ -151,11 +152,11 @@ export default function Navbar() {
                 className='hidden h-6 w-6 group-data-[open]:block'
               />
             </DisclosureButton>
-          </div>
+          </div> */}
         </div>
       </div>
 
-      <DisclosurePanel className='md:hidden'>
+      {/* <DisclosurePanel className='md:hidden'>
         <div className='space-y-1 px-2 pb-3 pt-2 sm:px-3'>
           {navigation.map((item) => (
             <DisclosureButton
@@ -218,7 +219,7 @@ export default function Navbar() {
             </Link>
           </div>
         </div>
-      </DisclosurePanel>
+      </DisclosurePanel> */}
     </Disclosure>
   );
 }
