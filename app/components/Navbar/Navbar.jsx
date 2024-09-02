@@ -12,19 +12,13 @@ import {
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
   LoginLink,
+  LogoutLink,
   RegisterLink,
   useKindeBrowserClient,
 } from "@kinde-oss/kinde-auth-nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
 
 const navigation = [
   { name: "Dashboard", href: "/dashboard", current: true, requireAuth: true },
@@ -33,21 +27,21 @@ const navigation = [
   // { name: "Garderie", href: "/dashboard/data", current: false },
   { name: "Reports", href: "/dashboard/reports", current: false },
 ];
-const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
-];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 export default function Navbar() {
   //   const { isAuthenticated } = getKindeServerSession();
-  const { isAuthenticated } = useKindeBrowserClient();
+  const { isAuthenticated, user } = useKindeBrowserClient();
   const pathname = usePathname();
   const activeLink =
     "/dashboard" + (pathname.split("/")[2] ? "/" + pathname.split("/")[2] : "");
+
+  const userNavigation = [
+    { name: "Profile", href: "#" },
+    { name: "Paramettre", href: "#" },
+  ];
 
   return (
     <Disclosure as='nav' className='bg-gray-800 sticky top-0 z-50'>
@@ -102,10 +96,12 @@ export default function Navbar() {
                       <MenuButton className='relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'>
                         <span className='absolute -inset-1.5' />
                         <span className='sr-only'>Open user menu</span>
-                        <img
-                          alt=''
-                          src={user.imageUrl}
-                          className='h-8 w-8 rounded-full'
+                        <Image
+                          width={42}
+                          height={42}
+                          alt='Profile'
+                          src={user.picture}
+                          className='h-9 w-9 rounded-full'
                         />
                       </MenuButton>
                     </div>
@@ -124,6 +120,9 @@ export default function Navbar() {
                           </Link>
                         </MenuItem>
                       ))}
+                      <LogoutLink className='text-red-500 font-normal p-5'>
+                        Se deconnecter
+                      </LogoutLink>
                     </MenuItems>
                   </Menu>
                 </>
@@ -178,18 +177,20 @@ export default function Navbar() {
         <div className='border-t border-gray-700 pb-3 pt-4'>
           <div className='flex items-center px-5'>
             <div className='flex-shrink-0'>
-              <img
-                alt=''
-                src={user.imageUrl}
+              <Image
+                width={42}
+                height={42}
+                alt='Profile'
+                src={user?.picture}
                 className='h-10 w-10 rounded-full'
               />
             </div>
             <div className='ml-3'>
               <div className='text-base font-medium leading-none text-white'>
-                {user.name}
+                {user?.name}
               </div>
               <div className='text-sm font-medium leading-none text-gray-400'>
-                {user.email}
+                {user?.email}
               </div>
             </div>
             <button
@@ -197,7 +198,7 @@ export default function Navbar() {
               className='relative ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
             >
               <span className='absolute -inset-1.5' />
-              <span className='sr-only'>View notifications</span>
+              <span className='sr-only'>Les Notifications</span>
               <BellIcon aria-hidden='true' className='h-6 w-6' />
             </button>
           </div>
@@ -212,6 +213,9 @@ export default function Navbar() {
                 {item.name}
               </DisclosureButton>
             ))}
+            <Link>
+              <LogoutLink className='text-red-500'>Se deconnecter</LogoutLink>
+            </Link>
           </div>
         </div>
       </DisclosurePanel>
