@@ -38,6 +38,7 @@ export default function Navbar() {
   const activeLink =
     "/dashboard" + (pathname.split("/")[2] ? "/" + pathname.split("/")[2] : "");
 
+  const urlLink = isAuthenticated ? "/dashboard" : "/";
   const userNavigation = [
     { name: "Profile", href: "#" },
     { name: "Paramettre", href: "#" },
@@ -49,13 +50,15 @@ export default function Navbar() {
         <div className='flex h-16 items-center justify-between'>
           <div className='flex items-center'>
             <div className='flex-shrink-0'>
-              <Image
-                width={200}
-                height={200}
-                alt='Racine14 Creator'
-                src='/assets/logo.png'
-                className='h-8 w-8'
-              />
+              <Link href={urlLink}>
+                <Image
+                  width={200}
+                  height={200}
+                  alt='Racine14 Creator'
+                  src='/assets/logo.png'
+                  className='h-8 w-8'
+                />
+              </Link>
             </div>
             <div className='hidden md:block'>
               <div className='ml-10 flex items-baseline space-x-4'>
